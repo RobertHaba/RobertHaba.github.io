@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>DailyTask</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#051021">
+    <link rel="icon" href="dt.jpg" />
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Exo+2|Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Saira+Extra+Condensed" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="loading" id="loading">
+        Ładowanie
+    </div>
+    <!-- 
+
+GŁÓWNY LAYOUT
+
+-->
+    <main class="layout" id="layout-main">
+        <header id="layout-header">
+            <div class="menu-mobile" onclick="showMenu('nav', this)"></div>
+            <aside class="login-con">
+                <div class="account-con" onclick="showAccountOpt()">
+                    <div class="img-account" id="imageProfil"></div>
+                    <div class="account" id="accountName">Administrator</div>
+                </div>
+                <div class="account-opt" id="account-opt">
+
+                    <div class="logout-opt" onclick="logout()">WYLOGUJ</div>
+                </div>
+            </aside>
+
+            <div class="header-name">
+                <h1>DailyTask v.2.340</h1>
+            </div>
+        </header>
+        <nav id="nav">
+
+
+            <div class="nav-opt" onclick="openWindow(home, this),nowadayHome(),interactionOff()">
+                <div class="nav-img"><img src="icon/home.svg" alt="home"></div>Strona Główna<span id="homeBorder"></span></div>
+
+            <div class="nav-opt" onclick="openWindow(newTask, this), interactionOff(), autoDate()">
+                <div class="nav-img"><img src="icon/new.svg" alt="new"></div>Nowe zadanie</div>
+            <div class="nav-opt" onclick="openWindow(myTask, this), openMyTask()">
+                <div class="nav-img"><img src="icon/plan.svg" alt="plan"></div>Moje zadania</div>
+            <div class="nav-opt" onclick="openWindow(dailyPlan, this), interactionOff(), nowadayTask()">
+                <div class="nav-img"><img src="icon/planning.svg" alt="planning"></div>Plan dnia</div>
+            <div class="nav-opt" onclick="openWindow(settings, this), interactionOff()">
+                <div class="nav-img"><img src="icon/settings.svg" alt="settings"></div>Ustawienia</div>
+
+
+        </nav>
+        <section class="layout-start" id="layout-start">
+            <article class="start-text-box">
+
+                <header id="layout-start-header">
+                    <h2>Daily Task</h2>
+                </header>
+                <div class="start-slide-text">
+                    <p>&nbsp- Tu zaczyna się twój dzień.</p>
+                </div>
+
+
+            </article>
+        </section>
+        <!-- 
+
+MENU: STRONA GŁÓWNA
+
+-->
+        <section class="help-home" id="home">
+            <article class="layout-home">
+                <section class="rangeLvl-box">
+
+                    <header>
+                        <h2 class="textRange"></h2>
+                    </header>
+                    <div class="quoteRange"></div>
+                </section>
+
+                <section class="quoteHome-box">
+                    <header class="quoteHeader">
+                        <h2>Cytat dnia</h2>
+                    </header>
+                    <div class="quoteHome">
+                        <quotte>"Możesz marzyć o życiu, zmianie i przyszłości jakiej pragniesz. Ale dopóki nie przebudzisz się ze snu i nie rozpoczniesz planowania, aby się tam dostać. To wszystko pozostanie tylko marzeniem."</quotte>
+                    </div>
+                </section>
+                <section class="firstTask-box">
+                    <header class="text-firstTask">
+                        <h2>Twoje najbliższe zadanie:</h2>
+                    </header>
+                    <div class="firstHomeTask" id="firstTaskHome">
+                    </div>
+                </section>
+                <section class="achievements-box">
+                    <header class="achievements-header">
+                        <h2>Osiągnięcia</h2>
+                    </header>
+                    <article class="achievements">
+                        <div class="achi-con" id="habitue-box">
+                            <div class="achi-con-header">STAŁY BYWALEC</div>
+                            <div class="achi-small-con">
+                                <div class="achi-info">Wejdź na DailyTask 10 dni z rzędu</div>
+                                <div class="proggresiv-bar">
+                                    <div class="proggresion" style="width:calc(100% - 90%)" id="habitue"></div>1 z 10 dni
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="achi-con" id="daily-strategist-box">
+                            <div class="achi-con-header">STRATEG DNIA</div>
+                            <div class="achi-small-con">
+                                <div class="achi-info">Miej utworzone zadanie na każdy kolejny dzień przez 10 dni</div>
+                                <div class="proggresiv-bar">
+                                    <div class="proggresion" style="width:calc(100% - 90%)" id="dailyStrategist"> </div>1 z 10 dni
+                                </div>
+                            </div>
+                        </div>
+                        <div class="achi-con" id="planning-maniac-box">
+                            <div class="achi-con-header">MANIAK PLANOWANIA</div>
+                            <div class="achi-small-con">
+                                <div class="achi-info">Utwórz 50 zadań</div>
+                                <div class="proggresiv-bar">
+                                    <div class="proggresion" style="width:calc(100% - 100%)" id="planningManiac"></div>
+                                    <a class="countAchi">0</a> z 50 zadań
+                                </div>
+                            </div>
+                        </div>
+                        <div class="achi-con" id="sesion-time-box">
+                            <div class="achi-con-header">ŁOWCA CZASU</div>
+                            <div class="achi-small-con">
+                                <div class="achi-info">Przesiedź 5 minut na stronie w jednej sesji</div>
+                                <div class="proggresiv-bar">
+                                    <div class="proggresion" style="width:calc(100% - 100%)" id="timeHunter"></div><a class="countAchi">0</a> z 5 minut
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+
+
+
+
+
+            </article>
+
+        </section>
+        <!-- 
+
+MENU: NOWE ZADANIE
+
+-->
+        <section class="help-newTask" id="newTask">
+            <article class="layout-newTask">
+                <div class="new-task-right"> <label for="nameTask">Nazwa zadania</label></div>
+                <div class="new-task-property">
+                    <div class="create-option">
+
+                        <input id="nameTask" type="text" name="task-name" maxlength="120" onkeyup="countCharLength('120', this)" />
+
+                    </div>
+                </div>
+
+                <div class="new-task-right"> <label>Skrócona nazwa zadania</label></div>
+                <div class="new-task-property">
+                    <div class="create-option">
+                        <input type="text" name="task-short-name" maxlength="120" onkeyup="countCharLength('120', this)" />
+
+                    </div>
+                </div>
+
+                <div class="new-task-right"><label for="newDate">Data zadania
+</label></div>
+                <div class="new-task-property">
+                    <div class="create-option">
+                        <div class="icon-task date"></div>
+                        <input id="newDate" type="date" name="task-date">
+                        <input type="time" name="task-time" id="newTime">
+
+                    </div>
+                </div>
+
+                <div class="new-task-right">
+                    <label for="newRange">Stopień ważności zadania
+(1-Mały; 5-Wysoki)</label>
+                </div>
+                <div class="new-task-property">
+                    <div class="create-option">
+                        <select name="rang" id="newRange">
+                                   <option value='1'>
+                    1
+                                   </option>
+                                   <option value='2'>
+                    2
+                                   </option>
+                                   <option value='3'>
+                    3
+                                   </option>
+                                   <option value='4'>
+                    4
+                                   </option>
+                                   <option value='5'>
+                    5
+                                   </option>
+                    
+                                </select>
+                    </div>
+                </div>
+
+                <div class="new-task-right">
+                    <label for="newDescription">Opis zadania </label>
+                </div>
+                <div class="new-task-property">
+                    <div class="create-option">
+                        <textarea maxlength="255" name="task-description" id="newDescription" onkeyup="countCharLength('255', this)"></textarea>
+
+                    </div>
+                </div>
+
+                <div class="new-task-right">
+                    <label for="newCategory">Kategoria</label>
+                </div>
+                <div class="new-task-property">
+                    <div class="create-option">
+                        <select name="task-category" id="newCategory">
+                                   <option value='hobby'>
+                                      Hobby
+                                   </option>
+                                   <option value='sport'>
+                                      Sport
+                                   </option>
+                                   <option value='nauka'>
+                                      Nauka
+                                   </option>
+                                   <option value='biznes'>
+                                      Biznes
+                                   </option>
+                                   <option value='praca'>
+                                      Praca
+                                   </option>
+                                   <option value='rodzina'>
+                                      Rodzina
+                                   </option>
+                                   <option value='inne'>
+                                      Inne
+                                   </option>
+                                </select>
+                    </div>
+                </div>
+
+
+
+
+
+            </article>
+            <footer class="footer-mytask" id="footerNewTask">
+
+                <div class="footer-options-con-plan">
+                    <div class="create-newTask">
+                        <button onclick="createNewTask(this); popUpId('popUpMyNewTask',4500)" class="button-newTask btn-1 btn-1c" type="button">Utwórz</button>
+                        <button onclick="clear_InputNewTask()" class="button-newTask btn-1 btn-1c" type="button ">Wyczyść</button>
+                        <div class="pop-up-settings" id="popUpMyNewTask">
+
+                            <p class="textPopUp"></p>
+                        </div>
+                    </div>
+                    <div class="full-screen-mytask" onclick="fullScreen(this, 'footerNewTask', 'help-newTask')"><img src="icon/resize.svg" alt="zmiana wielkości okna nowe zadanie"></div>
+
+                </div>
+            </footer>
+            <div class="mobile-btn-create">
+                <button onclick="createNewTask(this)" class="button-newTask btn-1 btn-1c">Utwórz</button>
+                <button onclick="clear_InputNewTask()" class="button-newTask btn-1 btn-1c">Wyczyść</button>
+            </div>
+
+        </section>
+
+        <!-- 
+
+MENU: MOJE ZADANIA
+
+-->
+        <section class="layout-plan-scroll" id="myTask">
+            <div class="mobile-filter-nav" onclick="showFilterOptions()"></div>
+            <nav class="plan-nav" id="myPlanFilter">
+                <div class="plan-nav-option" onclick="showFilters()">filtruj</div>
+                <div class="plan-nav-option" onclick="filtr('wszystkie', this)">wszystkie</div>
+                <div class="plan-nav-option" onclick="filtr('hobby', this)">hobby</div>
+                <div class="plan-nav-option" onclick="filtr('sport', this)">sport</div>
+                <div class="plan-nav-option" onclick="filtr('nauka', this)">nauka</div>
+                <div class="plan-nav-option" onclick="filtr('biznes', this)">biznes</div>
+                <div class="plan-nav-option" onclick="filtr('praca', this)">praca</div>
+                <div class="plan-nav-option" onclick="filtr('rodzina', this)">rodzina</div>
+                <div class="plan-nav-option" onclick="filtr('inne', this)">inne</div>
+                <div class="plan-nav-option" id="closeFiltr">Kategorie</div>
+                <div class="plan-nav-option" id="lowerRang">Malejąco(Ranga)</div>
+                <div class="plan-nav-option" id="higherRang">Rosnąco(Ranga)</div>
+                <div class="plan-nav-option" id="lowerDate">Malejąco<br>(Data zakończenia)</div>
+                <div class="plan-nav-option" id="higherDate">Rosnąco<br>(Data zakończenia)</div>
+                <div class="plan-nav-option" id="lowerDateCreated">Malejąco<br>(Data utworzenia)</div>
+                <div class="plan-nav-option" id="higherDateCreated">Rosnąco<br>(Data utworzenia)</div>
+            </nav>
+            <article class="layout-plan-list" id="layout-plan">
+
+
+
+
+
+
+
+            </article>
+            <div class="noTasksCon">
+                <div class="noTasks">
+                    Obecnie nie masz żadnych zadań. Przejdź do zakładki
+                    <a class="link" onclick="openWindow(newTask,'0')">"Nowe zadanie" </a> i zacznij tworzyć swoje zadania.
+                </div>
+            </div>
+
+
+            <div class="pop-up-settings" id="popUpInteraction">
+
+                <p class="textPopUp">Wejdź w tryb interakcji, aby zarządzać swoimi zadaniami.</p>
+            </div>
+
+
+            <footer class="footer-mytask" id="footerMyTask">
+                <div class="footer-filter" id="footerFiltr">Filtr</div>
+                <div class="footer-options"></div>
+                <div class="footer-filter" id="footerCategory">Kategoria</div>
+                <div class="footer-options"></div>
+                <div class="footer-options-con">
+                    <div class="footer-switch">
+                        <div class="name-switch">Interakcja</div>
+                        <label class="switch">
+                    <input id="checkInteraction" type="checkbox" onclick="if(this.checked){interaction(); popUpId('popUpMyTask',4000)} else{interactionOff()}">
+                   
+                    <span class="slider"></span>
+                    
+                    </label>
+                        <div class="pop-up-settings" id="popUpMyTask">
+
+                            <p>Chwyć "zadanie", a następnie przenieś je do kosza i usuń.</p>
+                        </div>
+                    </div>
+                    <div class="footer-edit"><img src="icon/mytask/bin.svg" alt="Kosz" ondrop="dropRemove(event)" ondragover="allowDrop(event)"></div>
+
+                    <div class="full-screen-mytask" onclick="fullScreen(this, 'footerMyTask', 'layout-plan-scroll')"><img src="icon/resize.svg" alt="zmiana wielkości okna moje zadania"></div>
+
+                </div>
+            </footer>
+
+        </section>
+
+
+        <!-- 
+
+MENU: PLAN DNIA
+
+-->
+        <section class="help-dailyPlan" id="dailyPlan">
+
+            <article class="layout-dailyPlan">
+                <div class="timeBox H00">
+                    <div class="timeInterval">0-1H</div>
+                    <div class="taskNumbers"></div>
+                </div>
+                <div class="timeBox H01" id="H1-2">
+                    <div class="timeInterval">1-2H</div>
+                    <div class="taskNumbers"></div>
+                </div>
+                <div class="timeBox H02" id="H2-3">
+                    <div class="timeInterval">2-3H</div>
+                    <div class="taskNumbers"></div>
+                </div>
+                <div class="timeBox H03" id="H3-4">
+                    <div class="timeInterval">3-4H</div>
+                    <div class="taskNumbers"></div>
+                </div>
+                <div class="timeBox H04" id="H4-5">
+                    <div class="timeInterval">4-5H</div>
+                    <div class="taskNumbers"></div>
+                </div>
+                <div class="timeBox H05" id="H5-6">
+                    <div class="timeInterval">5-6H</div>
+                    <div class="taskNumbers"></div>
+                </div>
+                <div class="timeBox H06" id="H6-7">
+                    <div class="timeInterval">6-7H</div>
+                    <div class="taskNumbers"></div>
+                </div>
+                <div class="timeBox H07" id="H7-8">
+                    <div class="timeInterval">7-8H</div>
+                    <div class="taskNumbers"></div>
+                </div>
+                <div class="timeBox H08" id="H8-9">
+                    <div class="timeInterval">8-9H</div>
+                    <div class="taskNumbers"> </div>
+                </div>
+                <div class="timeBox H09" id="H9-10">
+                    <div class="timeInterval">9-10H</div>
+                    <div class="taskNumbers"></div>
+                </div>
+                <div class="timeBox H10" id="H10-11">
+                    <div class="timeInterval">10-11H</div>
+                    <div class="taskNumbers"></div>
+                </div>
+                <div class="timeBox H11" id="H11-12">
+                    <div class="timeInterval">11-12H</div>
+                    <div class="taskNumbers"></div>
+                </div>
+                <div class="timeBox H12" id="H12-13">
+                    <div class="timeInterval">12-13H</div>
+                    <div class="taskNumbers"></div>
+                </div>
+                <div class="timeBox H13" id="H13-14">
+                    <div class="timeInterval">13-14H</div>
+                    <div class="taskNumbers"></div>
+                </div>
+                <div class="timeBox H14" id="H14-15">
+                    <div class="timeInterval">14-15H</div>
+                    <div class="taskNumbers"></div>
+                </div>
+                <div class="timeBox H15" id="H15-16">
+                    <div class="timeInterval">15-16H</div>
+                    <div class="taskNumbers"></div>
+                </div>
+                <div class="timeBox H16" id="H16-17">
+                    <div class="timeInterval">16-17H</div>
+                    <div class="taskNumbers"></div>
+                </div>
+                <div class="timeBox H17" id="H17-18">
+                    <div class="timeInterval">17-18H</div>
+                    <div class="taskNumbers"></div>
+                </div>
+                <div class="timeBox H18" id="H18-19">
+                    <div class="timeInterval">18-19H</div>
+                    <div class="taskNumbers"></div>
+                </div>
+                <div class="timeBox H19" id="H19-20">
+                    <div class="timeInterval">19-20H</div>
+                    <div class="taskNumbers"></div>
+                </div>
+                <div class="timeBox H20" id="H20-21">
+                    <div class="timeInterval">20-21H</div>
+                    <div class="taskNumbers"></div>
+                </div>
+                <div class="timeBox H21" id="H21-22">
+                    <div class="timeInterval">21-22H</div>
+                    <div class="taskNumbers"></div>
+                </div>
+                <div class="timeBox H22" id="H22-23">
+                    <div class="timeInterval">22-23H</div>
+                    <div class="taskNumbers"></div>
+                </div>
+                <div class="timeBox H23" id="H23-24">
+                    <div class="timeInterval">23-24H</div>
+                    <div class="taskNumbers"></div>
+                </div>
+                <div class="slider-inline" id="slider-inline">
+                    <div class="recommended-task" id="sliderNowaday">
+                        <div class="slider-taskRange">
+                            <div class="slider-name">
+                                <p>Nie zapomnij o twoim <br>najważniejszym zadaniu dnia!</p>
+                            </div>
+                            <div class="nowadayTask" id="nowadayRange">
+                            </div>
+                            <div class="rememberAt">
+                                Dodatkowo pamiętaj o:
+                                <div class="rememberAt-box">
+                                    <img src="icon/dailyplan/family.svg" alt="rodzina">
+                                    <img src="icon/dailyplan/phone.svg" alt="telefon">
+                                    <img src="icon/dailyplan/keys.svg" alt="keys.svg">
+                                    <img src="icon/dailyplan/restaurant.svg" alt="jedzenie">
+                                    <img src="icon/dailyplan/smile.svg" alt="uśmiech">
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="recommended-task" id="sliderCurrenty">
+                        <div class="slider-taskRange">
+                            <div class="slider-name">
+                                <p>Twoje najbliższe zadanie to: </p>
+                            </div>
+                            <div class="nowadayTask" id="currentyTask">
+                            </div>
+                            <div class="rememberAt">
+                                Wykonaj je o przewidzaniej godzinie, a będzie Ci łatwiej z kolejną częścią dnia
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="conCreateTaskInfo" id="conCreateTaskInfo">
+                    <p> Obecnie nie masz planów na dzisiejszy dzień (
+                        <a class="dateNowaday" id="dateNow">
+
+                        </a>)
+                        <br>Przejdź do zakładki <a class="link" onclick="openWindow(newTask,'0')" rev="Kliknij, aby przejść do kreatora zadań">"Nowe zadanie"</a> i utwórz swoje zadanie.
+                    </p>
+                </div>
+
+            </article>
+            <div class="pop-up-settings" id="popUpNowadayTask">
+
+                <p class="textPopUp">Kliknij na podświetlone pole z godziną, a dowiesz się co masz zaplanowane w tym przedziale czasowym.</p>
+            </div>
+            <footer class="footer-mytask" id="footerPlan">
+
+                <div class="footer-options-con-plan">
+
+                    <div class="full-screen-mytask" onclick="fullScreen(this, 'footerPlan', 'help-dailyPlan')"><img src="icon/resize.svg" alt="zmiana wielkości okna dzisiejsze zadania"></div>
+
+                </div>
+            </footer>
+            <article class="pop-up-dailyTask" id="popUpDailyTask">
+                <div class="popDailyTask-close" onclick="closePopUpDailyTask()">X</div>
+                <header class="popDailyTask-logo">
+                    <h2>DailyTask</h2>
+                </header>
+                <div class="popDailyTask-element" id="popUpTask1"></div>
+                <div class="popDailyTask-element" id="popUpTask2"></div>
+
+
+
+
+
+            </article>
+
+
+
+        </section>
+
+        <!-- 
+
+MENU: USTAWIENIA
+
+-->
+
+        <section class="help-settings" id="settings">
+            <div class="pop-up-settings" id="popUpSettingsChangePass">
+
+                <p>Twoje hasło zostało zmienione.</p>
+            </div>
+            <article class="layout-settings">
+                <div class="info-settings">
+                    Wybierz 1 z 7 przygotowanych kolorystyk strony.
+                </div>
+                <div class="settings-color-box">
+                    <div class="settings-color-con" style="background-color:#002F10 " onclick="changeColor('#002F10', '#003d14', '#001909', 'linear-gradient(135deg,rgba(0, 25, 9,1) 0%, rgba(0, 61, 20, 1) 100%)', 'repeating-linear-gradient(-45deg, #002F10, #002F10 5px, #003d14 5px, #003d14 10px)')">
+
+                    </div>
+                    <div class="settings-color-con" style="background-color: #7d0019" onclick="changeColor('#7d0019', '#8d001a', '#6d0019', 'linear-gradient(135deg, #6d0019 0%, #8d001a 100%)', 'repeating-linear-gradient(-45deg, #7d0019, #7d0019 5px,  #8d001a 5px,  #8d001a 10px)')">
+
+                    </div>
+                    <div class="settings-color-con" style="background-color: #2F0025" onclick="changeColor('#2F0025', '#3a002e', '#190014', 'linear-gradient(135deg,rgba(25, 0, 20,1) 0%, rgba(58, 0, 46,1) 100%)', 'repeating-linear-gradient(-45deg, #2F0025, #2F0025 5px, #3a002e 5px, #3a002e 10px)')">
+
+                    </div>
+
+                    <div class="settings-color-con" style="background-color: #D62F8A" onclick="changeColor('#D62F8A', '#E83B99', '#B92676', 'linear-gradient(135deg,#B92676 0%, #E83B99 100%)', 'repeating-linear-gradient(-45deg,#D62F8A, #D62F8A 5px, #B92676 5px,#B92676 10px)')">
+
+                    </div>
+                    <div class="settings-color-con" style="background-color: #2A95AE" onclick="changeColor('#2A95AE', '#3AB5D2', '#21788D', 'linear-gradient(135deg,#21788D 0%, #2A95AE 100%)', 'repeating-linear-gradient(-45deg,#2A95AE, #2A95AE 5px,#21788D 5px,#21788D 10px)')">
+
+                    </div>
+                    <div class="settings-color-con" style="background-color: #051021" onclick="changeColor('#051021', '#0D192B', '#0D192B', 'linear-gradient(135deg, #051021 0%, #0d3157 100%)', 'repeating-linear-gradient(-45deg, #051021, #051021 5px, #0D192B 5px, #0D192B 10px)')">
+
+                    </div>
+                    <div class="settings-color-con" style="background-color: #0F0F0F" onclick="changeColor('#0F0F0F', '#151515', '#000000', 'linear-gradient(135deg,#000000 0%, #151515 100%)', 'repeating-linear-gradient(-45deg,#0F0F0F, #0F0F0F 5px,#151515 5px,#151515 10px)')">
+
+                    </div>
+
+                </div>
+                <div class="info-settings">
+                    Zmień hasło do profilu.
+                </div>
+                <div class="settings-newPass-con">
+                    <div class="settings-change-profil-pass"><label for="oldPass">Stare hasło</label><input type="password" id="oldPass"></div>
+
+                    <div class="settings-change-profil-pass"><label for="newPass">Nowe hasło</label><input type="password" id="newPass"></div>
+                    <button class="btn-pass" onclick="changeProfilPassword()" id="btn-change-pass">
+                        Potwierdź
+                    </button>
+
+                </div>
+            </article>
+
+
+        </section>
+
+
+
+    </main>
+
+    <div class="achi-finished" id="popUpAchi">
+        <div class="achi-finished-text">
+            Gratulację! Zdobywasz osiągnięcie &nbsp
+            <a id="achi-name"> </a>
+        </div>
+    </div>
+
+
+
+    <!-- 
+
+LOGOWANIE
+
+-->
+    <section class="layout-loggin" id="layot-loggin">
+        <article class="pop-up-create-profil" id="registerLayout">
+
+            <div class="register-box">
+                <header class="register-header">
+                    <h2>Zarejestruj się już teraz i zacznij panować nad swoim czasem</h2>
+                </header>
+                <div class="help-register-con">
+                    <div class="register-opt"><label for="register-login" id="labelLogin">Login</label> <input type="text" id="register-login" placeholder="Długość 1-13"></div>
+                    <div class="register-opt"><label for="register-pass" id="labelPass">Hasło</label> <input type="password" id="register-pass" placeholder="Długość 1-13"></div>
+                </div>
+                <div class="help-register-con">
+                    <div class="text-icon-pick">
+                        Wybierz typ swojego konta
+                    </div>
+                    <div class="inline-image">
+                        <div class="profil-image-pick" onclick="profilType('man')">
+                            <img src="icon\account\admin.svg" alt="man image profil">
+                        </div>
+                        <div class="profil-image-pick" onclick="profilType('woman')">
+                            <img src="icon\account\woman.svg" alt="woman image profil">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="register-options-box">
+                    <button class="btn-reg" onclick="createAccount()">
+                        Utwórz
+                    </button>
+                </div>
+            </div>
+
+        </article>
+        <div class="pop-up-settings" id="popUpLogin">
+
+            <p>Niepoprawny login lub hasło. (Domyślnie Login: Admin, Hasło: Admin)</p>
+        </div>
+        <header class="popDailyTask-logo" style="display:none" id="logoLogin">
+            <h2>DailyTask</h2>
+        </header>
+        <div class="loggin-box">
+            <div class="loggin-con">
+                <div class="loggin-opt"><label for="loggin"><img src="icon/user.svg" alt="ikonka użytkownika"></label> <input type="text" id="loggin" placeholder="Login"></div>
+                <div class="loggin-opt"> <label for="password"><img src="icon/pass.svg" alt="Ikonka hasła"></label><input type="password" id="password" placeholder="Hasło"></div>
+                <div class="loggin-btn-con">
+                    <button class="btn-loggin btn-log btn-logc" onclick='loggin()'>Zaloguj</button>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="remember-profile" id="rememberProfile">
+            <div class="account-picture" id="accountPicture" onclick="rememberLoggin()" title="Admin"></div>
+            <div class="account-short-loggin" id="short-loggin-pass"><label for="shortPass"><img src="icon/pass.svg" alt="Ikonka  hasła"></label><input type="password" id="shortPass" placeholder="hasło"></div>
+            <div class="loggin-btn-con">
+                <button class="btn-loggin btn-log btn-logc" onclick='shortLoggin()' id="shortLogginBtn">Zaloguj</button>
+
+            </div>
+        </div>
+        <div class="forget-pass-con" id="forget-pass" onclick="forgetPass()">Przypomnij hasło.</div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <script src="main.js "></script>
+    <script src="loggin.js"></script>
+    <script src="newtask.js "></script>
+    <script src="home.js "></script>
+    <script src="mytask.js "></script>
+
+    <script src="mobile.js"></script>
+    <script src="dailyplan.js "></script>
+    <script src="settings.js"></script>
+    <script>
+        document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+    </script>
+
+</body>
+
+</html>

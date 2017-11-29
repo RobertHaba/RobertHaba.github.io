@@ -1,0 +1,389 @@
+    body,
+    h1,
+    h2 {
+        padding: 0px;
+        margin: 0px;
+    }
+    
+    main {
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        position: relative;
+        grid-template-rows: 9vh 91vh;
+        grid-template-columns: 23vw 54vw 23vw;
+        font-family: 'Montserrat';
+        overflow: hidden;
+    }
+    
+    .header-layout {
+        width: 100%;
+        height: 100%;
+        background-color: blue;
+        grid-column: 1/4;
+        display: grid;
+        grid-template-columns: 23vw 77vw;
+    }
+    
+    .header-options-left {
+        width: 100%;
+        height: 100%;
+        background-color: #CCC;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        color: #2D73F3;
+    }
+    
+    #mainSearch {
+        background-color: rgba(0, 0, 0, 0);
+        border: none;
+        width: 80px;
+        cursor: pointer;
+        padding: 5px 8px;
+        color: #555;
+    }
+    
+    .header-search {
+        display: flex;
+    }
+    
+    .searchIcon {
+        background-image: url("img/search.svg");
+        background-size: 100% 100%;
+        width: 25px;
+        height: 25px;
+        z-index: 10;
+        content: ' ';
+        margin-right: 4px;
+    }
+    
+    .header-options-left input:focus {
+        background-color: #FFF;
+    }
+    
+    .header-options-right {
+        width: 100%;
+        height: 100%;
+        background-color: #2D73F3;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    
+    .header-account-box {
+        display: grid;
+        grid-template-rows: 20px 20px;
+        grid-template-columns: 60px auto;
+        padding-right: 25px;
+    }
+    
+    .account-image {
+        grid-row: 1/3;
+        background-image: url("img/boy.svg");
+        background-size: 100% 100%;
+        background-color: #FFF;
+        margin-right: 20px;
+        border-radius: 2px;
+    }
+    
+    .account-name,
+    .account-options {
+        color: #FFF;
+        font-size: 14px;
+    }
+    
+    .account-name {
+        font-weight: bold;
+    }
+    
+    .messages-layout,
+    .chat-layout,
+    .users-layout {
+        grid-row: 2;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-rows: 8% 92%;
+    }
+    
+    .messages-layout {
+        background-color: #EEE;
+        border-right: 1px solid #E0E0E0;
+        box-sizing: border-box;
+    }
+    
+    .chat-layout {
+        background-color: #FFF;
+    }
+    
+    .users-layout {
+        background-color: #EEE;
+        border-left: 1px solid #E0E0E0;
+        box-sizing: border-box;
+    }
+    
+    .messages-header,
+    .chat-header,
+    .users-header {
+        width: 100%;
+        height: 100%;
+        border-bottom: 1px solid #E0E0E0;
+    }
+    
+    .messages-header {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    
+    .messages-header h1 {
+        color: #2D73F3;
+        font-size: 14px;
+    }
+    
+    .btn-new {
+        background-color: #2D73F3;
+        padding: 10px 18px;
+        border: none;
+        color: #FFF;
+        border-radius: 2px;
+    }
+    
+    .messages-con {
+        position: relative;
+        height: auto;
+        width: 100%;
+        overflow-y: auto;
+    }
+    
+    .friends-box {
+        position: relative;
+        height: 100px;
+        width: 100%;
+        background-color: #EEE;
+        border-top: 1px solid #CCC;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    
+    .friends-img {
+        background-image: url("img/boy.svg");
+        background-size: 100% 100%;
+        background-color: #FFF;
+        border-radius: 2px;
+        width: 35px;
+        height: 35px;
+    }
+    
+    .friends-description {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        left: 0px;
+    }
+    
+    .friends-name {
+        font-size: 14px;
+        color: #444;
+        font-weight: bold;
+    }
+    
+    .friends-short-msg {
+        width: 10vw;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        font-size: 12px;
+        color: #BBB;
+    }
+    
+    .friends-count-msg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #FFF;
+        position: absolute;
+        background-color: #2D73F3;
+        width: 15px;
+        height: 15px;
+        border-radius: 100%;
+        border: 3px solid #EEE;
+        transform: translateY(-50%);
+        margin-left: 25.5px;
+        font-size: 9px;
+    }
+    
+    .friends-msg-time {
+        font-size: 13px;
+    }
+    
+    .chat-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .chat-name {
+        position: relative;
+        left: 15px;
+        color: #2D73F3;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    
+    .chat-menu {
+        position: relative;
+        right: 15px;
+        background-color: #EEE;
+        padding: 10px 25px;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 2px;
+    }
+    
+    .chat-con {
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-rows: 90% 10%;
+    }
+    
+    .show-msg {
+        padding: 13px;
+        box-sizing: border-box;
+        height: 100%;
+        overflow-y: auto;
+        width: 100%;
+        margin-top: 1px;
+    }
+    
+    .msg-left {
+        width: 80%;
+        max-width: 80%;
+        padding: 7px;
+        box-sizing: border-box;
+        display: flex;
+    }
+    
+    .msg-left .friends-img {
+        background-color: #2D73F3;
+    }
+    
+    .msg-text-left-con {
+        width: 100%;
+        border-radius: 2px;
+        margin-left: 10px;
+        background-color: #2D73F3;
+        color: #FFF;
+        padding: 8px;
+        height: auto;
+        font-size: 14px;
+    }
+    
+    .msg-right {
+        width: 80%;
+        max-width: 80%;
+        padding: 7px;
+        box-sizing: border-box;
+        display: flex;
+        position: relative;
+        right: 0px;
+        left: 20%;
+        font-size: 14px;
+    }
+    
+    .msg-text-right-con {
+        width: 100%;
+        padding: 8px;
+        background-color: #EEE;
+    }
+    
+    .chat-options {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        border-top: 1px solid #EEE;
+        justify-content: space-around;
+        align-items: center;
+    }
+    
+    .msg-textarea {
+        width: 70%;
+        height: 70%;
+        border: 1px solid #AAA;
+        background-color: #FFF;
+        border-radius: 2px;
+        resize: none;
+        font-family: 'Montserrat';
+        font-size: 13px;
+        color: #444;
+        padding: 6px;
+    }
+    
+    .show-msg::-webkit-scrollbar,
+    .users-list::-webkit-scrollbar,
+    .messages-con::-webkit-scrollbar {
+        width: 9px;
+    }
+    
+    .show-msg::-webkit-scrollbar-track,
+    .users-list::-webkit-scrollbar-track,
+    .messages-con::-webkit-scrollbar-track {
+        box-shadow: 0px 0px 1px 0px #AAA;
+    }
+    
+    .show-msg::-webkit-scrollbar-thumb,
+    .users-list::-webkit-scrollbar-thumb,
+    .messages-con::-webkit-scrollbar-thumb {
+        background-color: #2D73F3;
+    }
+    
+    .btn-send {
+        height: 70%;
+        width: 20%;
+        background-color: #2D73F3;
+        border: none;
+        border-radius: 2px;
+        color: #FFF;
+        font-family: 'Montserrat';
+        font-size: 16px;
+    }
+    
+    .users-header {
+        display: flex;
+        align-items: center;
+        padding: 0 9px;
+        width: 100%;
+        height: 100%;
+        color: #2D73F3;
+    }
+    
+    .users-header h2 {
+        font-size: 14px;
+    }
+    
+    .users-list {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-y: auto;
+    }
+    
+    .user-con {
+        padding: 14px 14px;
+        width: calc(80% - 8px);
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #DDD;
+        min-height: 40px;
+    }
+    
+    .user-con .friends-img {
+        margin-right: 15px;
+    }
