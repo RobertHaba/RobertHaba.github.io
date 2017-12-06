@@ -1,3 +1,7 @@
+if (localStorage.getItem('layoutNormalColor')) {
+    layoutSetColor()
+}
+
 function layoutSetColor() {
     if (localStorage.getItem('layoutNormalColor')) {
         var normal = localStorage.getItem('layoutNormalColor')
@@ -29,10 +33,10 @@ function changeColor(normalColor, lightColor, darkColor, grandient, image) {
     layoutLoggin.style.background = grandient
         // opcje logowania
     var accountCon = document.getElementsByClassName('account-con')[0];
-
+    var profilOpt = document.getElementsByClassName('profil-opt')[0];
     var logoutOpt = document.getElementsByClassName('logout-opt')[0];
     accountCon.style.backgroundColor = darkColor;
-
+    profilOpt.style.backgroundColor = darkColor;
     logoutOpt.style.backgroundColor = darkColor
 
     //mobile

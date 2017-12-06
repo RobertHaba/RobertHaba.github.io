@@ -32,7 +32,7 @@ GŁÓWNY LAYOUT
                     <div class="account" id="accountName">Administrator</div>
                 </div>
                 <div class="account-opt" id="account-opt">
-
+                    <div class="profil-opt">PROFIL</div>
                     <div class="logout-opt" onclick="logout()">WYLOGUJ</div>
                 </div>
             </aside>
@@ -309,7 +309,7 @@ MENU: MOJE ZADANIA
                 <div class="plan-nav-option" id="lowerDateCreated">Malejąco<br>(Data utworzenia)</div>
                 <div class="plan-nav-option" id="higherDateCreated">Rosnąco<br>(Data utworzenia)</div>
             </nav>
-            <article class="layout-plan-list" id="layout-plan">
+            <article class="layout-plan" id="layout-plan">
 
 
 
@@ -660,8 +660,8 @@ LOGOWANIE
         </header>
         <div class="loggin-box">
             <div class="loggin-con">
-                <div class="loggin-opt"><label for="loggin"><img src="icon/user.svg" alt="ikonka użytkownika"></label> <input type="text" id="loggin" placeholder="Login"></div>
-                <div class="loggin-opt"> <label for="password"><img src="icon/pass.svg" alt="Ikonka hasła"></label><input type="password" id="password" placeholder="Hasło"></div>
+                <div class="loggin-opt"><label for="loggin"><img src="icon/user.svg" alt="ikonka użytkownika"></label> <input type="text" id="loggin"></div>
+                <div class="loggin-opt"> <label for="password"><img src="icon/pass.svg" alt="Ikonka hasła"></label><input type="password" id="password"></div>
                 <div class="loggin-btn-con">
                     <button class="btn-loggin btn-log btn-logc" onclick='loggin()'>Zaloguj</button>
                 </div>
@@ -671,7 +671,7 @@ LOGOWANIE
         </div>
         <div class="remember-profile" id="rememberProfile">
             <div class="account-picture" id="accountPicture" onclick="rememberLoggin()" title="Admin"></div>
-            <div class="account-short-loggin" id="short-loggin-pass"><label for="shortPass"><img src="icon/pass.svg" alt="Ikonka  hasła"></label><input type="password" id="shortPass" placeholder="hasło"></div>
+            <div class="account-short-loggin" id="short-loggin-pass"><label for="shortPass"><img src="icon/pass.svg" alt="Ikonka  hasła"></label><input type="password" id="shortPass"></div>
             <div class="loggin-btn-con">
                 <button class="btn-loggin btn-log btn-logc" onclick='shortLoggin()' id="shortLogginBtn">Zaloguj</button>
 

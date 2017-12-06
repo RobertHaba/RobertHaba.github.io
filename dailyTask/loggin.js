@@ -102,35 +102,14 @@ function showAccountOpt() {
     accountOpt.style.display = (accountOpt.style.display == 'flex') ? 'none' : 'flex'
 
 }
-
-profilOnline()
-
-function profilOnline() {
-    if (sessionStorage.getItem('online') == 'online') {
-
-
-        var loadingWindow = document.getElementById('loading')
-        var layout = document.getElementById('layout-main');
-        cloneAll = layout.cloneNode(true);
-        layout.remove();
-        setTimeout(function() {
-            loggin("online")
-            loadingWindow.style.display = "none"
-        }, 50)
-    } else {
-        var loadingWindow = document.getElementById('loading')
-        setTimeout(function() {
-            logout();
-            loadingWindow.style.display = "none"
-        }, 50)
-    }
-
-}
-
+var loadingWindow = document.getElementById('loading')
+setTimeout(function() {
+    logout();
+    loadingWindow.style.display = "none"
+}, 50)
 
 function logout() {
     var layout = document.getElementById('layout-main');
-
     var layoutLogin = document.getElementById('layot-loggin');
     var logoLogin = document.getElementById('logoLogin')
     logoLogin.style.display = "flex"
@@ -144,7 +123,7 @@ function logout() {
     cloneAll = layout.cloneNode(true);
     layout.remove();
     sessionTimeAchi = 0;
-    sessionStorage.setItem('online', "offline")
+
     checkAchiTime('break', sessionTimeAchi)
 
 
@@ -159,18 +138,18 @@ function logout() {
 
 
 
-function loggin(sessionOnline) {
+function loggin() {
     var login = document.getElementById('loggin')
     var pass = document.getElementById('password')
     var layoutLogin = document.getElementById('layot-loggin');
     var body = document.getElementsByTagName('body')[0]
 
 
-    if (login.value == localStorage.getItem('Login') && pass.value == localStorage.getItem('Password') || sessionOnline == "online") {
+    if (login.value == localStorage.getItem('Login') && pass.value == localStorage.getItem('Password')) {
         // czyszczenie inputów po zalogowaniu
         login.value = ""
         pass.value = ""
-        sessionStorage.setItem('online', 'online')
+
         layoutLogin.style.display = "none"
 
 
@@ -197,12 +176,6 @@ function loggin(sessionOnline) {
         profilName.innerHTML = localStorage.getItem('Login')
         checkAchiTime('start', sessionTimeAchi)
         taskLength()
-
-        if (localStorage.getItem('layoutNormalColor')) {
-
-            layoutSetColor()
-
-        }
         if (localStorage.getItem('countCreatedTask')) {
             achievements()
         }
@@ -233,7 +206,6 @@ function shortLoggin() {
 
 
     if (login == accountLogin && pass.value == localStorage.getItem('Password')) {
-        sessionStorage.setItem('online', 'online')
         pass.value = "";
         layoutLogin.style.display = "none"
         body.appendChild(cloneAll);
@@ -251,7 +223,6 @@ function shortLoggin() {
 
         checkAchiTime('start', sessionTimeAchi)
         taskLength()
-
         if (localStorage.getItem('countCreatedTask')) {
             achievements()
         }
@@ -263,11 +234,7 @@ function shortLoggin() {
         imageProfil.style.backgroundImage = "url(" + picture + ")";
         var profilName = document.getElementById('accountName')
         profilName.innerHTML = localStorage.getItem('Login')
-        if (localStorage.getItem('layoutNormalColor')) {
-            setTimeout(function() {
-                layoutSetColor()
-            }, 1000)
-        }
+
 
         return cloneAll = ""
     } else {

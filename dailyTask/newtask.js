@@ -198,8 +198,6 @@ function createNewTask(buttonEl) {
         if (checkDuplicate == 0) {
             contentPopUp.innerHTML = duplicateErrorText;
         }
-        contentPopUp.innerHTML = "Twoje zadanie nie zostało utworzone. Wypełnij odpowiednio pola.";
-
 
 
     }
@@ -368,18 +366,9 @@ function autoDate() {
     if (m < 10) {
         m = '0' + m
     }
-
-    var hour = parseInt(h) + 1;
-    if (hour == 24) {
-        hour = 00;
-
-    }
     if (h < 10) {
         h = '0' + h
     }
-    if (hour < 10) {
-        hour = '0' + hour
-    }
     dateTask.value = yyyy + '-' + mm + '-' + dd;
-    timeTask.value = hour + ":" + m;
+    timeTask.value = (parseInt(h) + 1) + ":" + m;
 }

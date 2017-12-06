@@ -135,7 +135,7 @@ function rangeLvl(cloneTask) {
         textRange.innerHTML = "Dzisiejsze zadania nie są specjalnie trudne."
         quoteRange.innerHTML = '"Miej jasno określony cel. Nie podążaj na ślepo. Dąż do bycia najlepszym. To będzie Twoją motywacją/tym co Cię napędza."'
     } else if (suma <= 7) {
-        textRange.innerHTML = "Dzisiejsze zadania pozwolą Ci się trochę wysilić."
+        textRange.innerHTML = "Dzisiejszy zadania pozwolą Ci się trochę wysilić."
         quoteRange.innerHTML = '"Kiedy przestajesz się rozwijać i pracować nad sobą. Nie stajesz się lepszy. To właśnie dzień, w którym umierasz."'
     } else if (suma <= 10) {
         textRange.innerHTML = "Przygotuj się na męczący dzień."

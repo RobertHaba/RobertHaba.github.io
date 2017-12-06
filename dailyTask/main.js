@@ -52,7 +52,6 @@ function openWindow(options, thisEl) {
             mainLayout.style.gridTemplateColumns = "22vw 78vw";
             footer.style.width = "calc(78vw)";
             nav.style.display = "grid"
-            nav.style.visibility = "visible"
             for (var i = 0; i < footerAll.length; i++) {
                 footerAll[i].style.width = "calc(78vw)";
             }
@@ -74,7 +73,6 @@ function openWindow(options, thisEl) {
         closeMobileMenu()
 
     }
-    loadFilterBar()
     localStorageElements()
 }
 
@@ -126,7 +124,6 @@ function clearNowadayRecommended() {
 
 function fullScreen(changeImg, idFooter, layoutClass) {
     var nav = document.getElementById('nav');
-    var navOpt = document.getElementsByClassName('nav-opt')
     var mainLayout = document.getElementsByClassName("layout")[0];
     var footer = document.getElementById(idFooter);
     var img = changeImg.childNodes;
@@ -138,21 +135,13 @@ function fullScreen(changeImg, idFooter, layoutClass) {
         img[0].src = "icon/resize.svg"
         mainLayout.style.gridTemplateColumns = "22vw 78vw";
 
-        for (var i = 0; navOpt.length > i; i++) {
-            navOpt[i].style.visibility = "visible"
-
-        }
 
         footer.style.width = "calc(78vw)";
     } else {
-        console.log(navOpt.length)
+
         nav.style.display = "none";
         footer.style.width = "calc(100vw)";
-        for (var i = 0; navOpt.length > i; i++) {
-            console.log("dzsaa")
-            navOpt[i].style.visibility = "hidden"
 
-        }
         img[0].src = "icon/fit.svg"
         mainLayout.style.gridTemplateColumns = "0vw 100vw";
         mainLayout.style.transition = "width 1s ease";

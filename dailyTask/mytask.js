@@ -1,27 +1,11 @@
-function loadFilterBar(displayProperty) {
-    var filterBar = document.getElementById("myPlanFilter");
-    var mainLayout = document.getElementsByClassName('layout')[0];
-    var filterBarChildren = filterBar.children
-    for (var i = 9; i < 16; i++) {
-        filterBarChildren[i].style.display = "none";
-    }
-    for (var i = 0; i <= 8; i++) {
-        console.log("dziaaala?")
-        filterBarChildren[i].style.display = "flex";
-        if (mainLayout.offsetWidth < 481) {
-            filterBar.style.gridTemplateColumns = "100%";
-
-        } else {
-            filterBar.style.gridTemplateColumns = "repeat(9,1fr)";
-        }
-
-    }
-    console.log("dziala?")
+var filterBar = document.getElementById("myPlanFilter");
+var filterBarChildren = filterBar.children
+for (var i = 9; i < filterBarChildren.length; i++) {
+    filterBarChildren[i].style.display = "none";
 }
 
 function openMyTask() {
-
-    var layout = document.getElementById("layout-plan")
+    var layout = document.getElementsByClassName("layout-plan")[0]
     var layoutScroll = document.getElementsByClassName("layout-plan-scroll")[0]
     var task = layout.getElementsByClassName('taskPlan');
     var noTasks = document.getElementsByClassName('noTasksCon')[0];
@@ -62,7 +46,7 @@ function showFilters() {
     }
 
 
-    for (var i = 0; i <= 8; i++) {
+    for (var i = 0; i <= 9; i++) {
         filterBarChildren[i].style.display = "none ";
 
     }
