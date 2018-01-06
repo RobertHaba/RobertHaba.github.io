@@ -1,0 +1,190 @@
+body {
+    margin: 0px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#vue-app {
+    width: 100%;
+    margin-top: 10px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-example {
+    min-width: 60vw;
+    width: 60vw;
+    min-height: 20vh;
+    box-shadow: 0px 0px 2px 2px #DDD;
+    padding: 12px;
+    margin: 20px;
+    font-size: 18px;
+    background-color: #FFF;
+}
+
+.head {
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid #EEE;
+    font-size: 29px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #6d0019;
+    display: flex;
+    align-items: center;
+}
+
+.head-small {
+    font-size: 19px;
+    padding-left: 10px;
+    box-sizing: border-box
+}
+
+.box-con {
+    margin-left: 20px;
+    margin-top: 24px;
+}
+
+.code {
+    background-color: #EEE;
+    padding: 5px;
+    color: #444;
+    margin: 20px 10px;
+}
+
+button {
+    background-color: #FFF;
+    border: 2px solid #222;
+    padding: 5px 9px;
+    background-color: #444;
+    color: #FFF;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn-right {
+    position: relative;
+    right: 0;
+}
+
+a:link,
+a:visited,
+a:active {
+    text-decoration: none;
+    color: #9d0019;
+}
+
+hr {
+    border: 1px solid #EEE;
+}
+
+.help-code {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    border-right: 1px solid #EEE;
+    height: auto;
+    width: 15vw;
+    max-width: 15vw;
+    background-color: #FFF;
+}
+
+.help-code .box-example {
+    min-width: 100%;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    height: 100vh;
+}
+
+.help-code .head {
+    height: auto;
+    font-size: 15px;
+}
+
+.copyArea {
+    opacity: 0;
+}
+
+#canvas {
+    width: 600px;
+    padding: 200px 20px;
+    text-align: center;
+    border: 1px solid #EEE;
+}
+
+span.dynamic-css {
+    background-color: red;
+    display: inline-block;
+    padding: 10px;
+    color: #FFF;
+    margin: 10px 0;
+}
+
+.available .dynamic-css {
+    background-color: green;
+}
+
+.nearby .dynamic-css:after {
+    content: 'nearby';
+    margin-left: 10px;
+}
+
+.btn-center {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-center button {
+    margin-right: 10px;
+}
+
+.new-instance-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #FDFDFD;
+    margin-top: 30px;
+    flex-direction: column;
+}
+
+
+/* Punch Game Bag */
+
+#bag {
+    width: 200px;
+    height: 500px;
+    background: url("img/bag.png") center no-repeat;
+    background-size: 80%;
+    margin: 0 auto;
+}
+
+#bag-health {
+    width: 200px;
+    border: 2px solid #000;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+#bag-health div {
+    background-color: crimson;
+    height: 20px;
+    width: 100%;
+}
+
+#bag.burst {
+    background-image: url('img/bag-burst.png')
+}

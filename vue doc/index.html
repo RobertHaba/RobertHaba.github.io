@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Less1</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <div id="vue-app">
+        <div class="box-example">
+            <div class="head">
+                Data
+            </div>
+            <div class="box-con">
+                <p>{{name}}</p>
+                <p>{{job}}</p>
+            </div>
+        </div>
+
+        <div class="box-example">
+            <div class="head">
+                Methods and Data
+            </div>
+
+            <div class="box-con">
+                <p>{{greet("Siemka ")}}</p>
+            </div>
+        </div>
+
+        <div class="box-example">
+            <div class="head">
+                Data binding
+            </div>
+            <div class="head head-small">Ex.1</div>
+            <div class="box-con">
+                <div class="code">v-bind:href="website"</div>
+                <a v-bind:href="website">Haba Site</a>
+
+            </div>
+            <div class="head head-small">Ex.2</div>
+            <div class="box-con">
+                <div class="code">v-html="websiteTag"</div>
+
+                <p v-html="websiteTag">{{websiteTag}}</p>
+            </div>
+
+        </div>
+
+
+        <div class="box-example">
+            <div class="head">
+                Events
+            </div>
+            <div class="head head-small">
+                Events ex.1
+            </div>
+            <div class="box-con">
+                <div class="code">v-on:click="age++"</div>
+                <button v-on:click="age++" class="btn-right">Add a Year</button>
+                <div class="code">v-on:click="age--"</div>
+                <button v-on:click="age--" class="btn-right">Subtract a Year</button>
+                <p>Age: {{age}}</p>
+            </div>
+            <div class="head head-small">
+                Events ex.2
+            </div>
+            <div class="box-con">
+                <div class='code'>
+                    v-on:dblclick="addAge(1)"
+                </div>
+                <button v-on:dblclick="addAge(1)" class="btn-right">Add a Year with function</button>
+                <div class='code'>
+
+                    v-on:dblclick="subtractAge(10)"
+                </div>
+                <button v-on:dblclick="subtractAge(10)" class="btn-right">Subtract a Year with function</button>
+                <p>Age: {{age2}}</p>
+            </div>
+            <div class="head head-small">
+                Events ex.3
+            </div>
+            <div class="box-con">
+                <div class="code">
+                    v-on:mousemove="getCordinateXY()"
+                </div>
+                <div id="canvas" v-on:mousemove="getCordinateXY()">
+                    {{x}}, {{y}}
+                </div>
+            </div>
+
+        </div>
+        <div class="box-example">
+            <div class="head">
+                Event Modifiers
+            </div>
+            <div class="head head-small">
+                EX.1
+            </div>
+            <div class="box-con">
+                <div class='code'>
+                    v-on:click.once="addAge(1)"
+                </div>
+                <button v-on:click.once="addAge(1)" class="btn-right">Add a Year with function</button>
+                <div class='code'>
+                    v-on:click="addAge()"
+                </div>
+                <button v-on:click="subtractAge(1)" class="btn-right">Subtract a Year with function</button>
+                <p>Age: {{age2}}</p>
+            </div>
+            <div class="head head-small">
+                EX.2
+            </div>
+            <div class="box-con">
+                <div class="code"> v-on:click="clickAlert()"</div>
+
+                <a v-on:click="clickAlert()" href="https://roberthaba.github.io">Haba Site</a>
+
+            </div>
+
+        </div>
+
+        <div class="box-example">
+            <div class="head">
+                Keyboard Events
+            </div>
+            <div class="head head-small">
+                EX.1
+            </div>
+            <div class="box-con">
+                <div class="code"> v-on:keyup.enter="keyboardEvLogName()"</div>
+                <label>Name</label><input type="text" v-on:keyup.enter="keyboardEvLogName()">
+                <div class="code"> v-on:keyup.alt.enter="keyboardEvLogAge()"</div>
+                <label>Age</label><input type="text" v-on:keyup.alt.enter="keyboardEvLogAge()">
+
+            </div>
+
+
+        </div>
+
+        <div class="box-example">
+            <div class="head">
+                Two-Way data Binding
+            </div>
+            <div class="head head-small">
+                EX.1
+            </div>
+            <div class="box-con">
+                <div class="code"> v-on:keyup.enter="keyboardEvLogName()"</div>
+                <label>Name</label><input type="text" v-on:keyup.enter="keyboardEvLogName()">
+                <div class="code"> v-on:keyup.alt.enter="keyboardEvLogAge()"</div>
+                <label>Age</label><input type="text" v-on:keyup.alt.enter="keyboardEvLogAge()">
+
+            </div>
+            <div class="head head-small">
+                EX.2
+            </div>
+            <div class="box-con">
+                <div class="code"> v-model="name"</div>
+                <label>Name</label><input type="text" v-model="name">
+                <span>{{name}}</span>
+                <div class="code"> v-model="age"</div>
+                <label>Age</label><input type="text" v-model="age">
+                <span>{{age}}</span>
+
+            </div>
+
+        </div>
+
+        <div class="box-example">
+            <div class="head">
+                Computed Properties
+            </div>
+            <div class="head head-small">
+                EX.1
+            </div>
+            <div class="box-con">
+                <div class="code">v-on:click="a++"</div>
+                <button class="btn-right" v-on:click="a++">Add to a</button>
+                <div class="code">v-on:click="b++"</div>
+                <button class="btn-right" v-on:click="b++">Add to b</button>
+                <p>A: {{a}}</p>
+                <p>B: {{b}}</p>
+                <p>Age + A = {{addToA()}}</p>
+                <p>Age + B = {{addToB()}}</p>
+
+            </div>
+            <div class="head head-small">
+                EX.2
+            </div>
+            <div class="box-con">
+                <div class="code">v-on:click="a1++"</div>
+                <button class="btn-right" v-on:click="a1++">Add to a</button>
+                <div class="code">v-on:click="b1++"</div>
+                <button class="btn-right" v-on:click="b1++">Add to b</button>
+
+                <p>A: {{a1}}</p>
+                <p>B: {{b1}}</p>
+                <p>Age + A = {{addToA1}}</p>
+                <p>Age + B = {{addToB1}}</p>
+
+            </div>
+
+        </div>
+
+        <div class="box-example">
+            <div class="head">
+                Dynamic css
+            </div>
+            <div class="head head-small">
+                EX.1
+            </div>
+            <div class="box-con">
+                <div class="code">v-on:click="{available = !available}" v-bind:class="{available: available}</div>
+
+                <div v-on:click="{available = !available}" v-bind:class="{available: available}">
+                    <span class="dynamic-css"></span>
+                </div>
+
+            </div>
+            <div class="head head-small">
+                EX.2
+            </div>
+            <div class="box-con">
+                <div class="code">
+                    v-on:click="available = !available"<br> v-on:click="nearby = !nearby"<br> v-bind:class="compClass"
+
+                </div>
+                <button v-on:click="available = !available">Available</button>
+                <button v-on:click="nearby = !nearby">Nearby</button>
+                <div v-bind:class="compClass">
+                    <span class="dynamic-css">Tekst</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="box-example">
+            <div class="head">
+                Conditionals
+            </div>
+            <div class="head head-small">
+                EX.1
+            </div>
+            <div class="box-con">
+                <div class="code">
+                    v-on:click="error = !error"<br> v-on:click="success = !success"<br> v-if="error" <br> v-else-if="success"
+
+                </div>
+
+                <button v-on:click="error = !error">btn-right</button>
+                <button v-on:click="success = !success">btn-right</button>
+                <p v-if="error">Error msg</p>
+                <p v-else-if="success">Success msg</p>
+
+            </div>
+            <div class="head head-small">
+                EX.2
+            </div>
+            <div class="box-con">
+                <div class="code">
+                    v-on:click="error = !error"<br> v-on:click="success = !success"<br> v-show="error" <br> v-show="success"
+
+                </div>
+                <button v-on:click="error = !error">btn-right</button>
+                <button v-on:click="success = !success">btn-right</button>
+
+                <p v-show="error">Error sec msg</p>
+                <p v-show="success">Success sec msg</p>
+
+            </div>
+
+        </div>
+
+        <div class="box-example">
+            <div class="head">
+                Header
+            </div>
+            <div class="head head-small">
+                EX.1
+            </div>
+            <div class="box-con">
+                <div class="code">v-for="nameAr in nameArray"</div>
+
+                <div v-for="nameAr in nameArray">{{nameAr}}</div>
+
+
+            </div>
+            <div class="head head-small">
+                EX.2
+            </div>
+            <div class="box-con">
+                <div class="code">v-for="nameObj in haba"</div>
+
+                <div v-for="nameObj in haba">{{nameObj}}</div>
+
+            </div>
+            <div class="head head-small">
+                EX.3
+            </div>
+            <div class="box-con">
+                <div class="code">v-for="nameObj2 in haba"
+
+                </div>
+
+                <div v-for="nameObj2 in haba">
+                    <h4>{{nameObj2.name}}</h4>
+                    <p>{{nameObj2.age}}</p>
+                </div>
+
+            </div>
+            <div class="head head-small">
+                EX.4
+            </div>
+            <div class="box-con">
+                <div class="code"> v-for="(haba1, index) in haba"
+
+                </div>
+
+
+                <template v-for="(haba1, index) in haba"><h4>{{index}} . {{haba1.name}}</h4><p>{{haba1.age}}</p></template>
+
+
+            </div>
+            <div class="head head-small">
+                EX.5
+            </div>
+            <div class="box-con">
+                <div class="code">v-for="habaObj in haba"<br> v-for="(val, key) in habaObj"
+
+                </div>
+
+
+                <template v-for="habaObj in haba">
+                   <div v-for="(val, key) in habaObj">
+                       {{key}} - {{val}}
+                   </div>
+                </template>
+
+
+            </div>
+
+        </div>
+
+        <div class="box-example">
+            <div class="head">
+                Simple Punchbag Game
+            </div>
+            <div class="head head-small">
+                EX.1
+            </div>
+            <div class="box-con">
+
+                <div id="bag" v-bind:class="{burst: ended}"></div>
+                <div id="bag-health">
+                    <div v-bind:style="{width : health + '%'}"></div>
+                </div>
+                <div class="btn-center">
+                    <button v-on:click="punch()" v-show="!ended">Punch</button>
+                    <button v-on:click="restartPunchGame()">Restart</button>
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <div class="new-instance-box">
+
+        <div class="box-example">
+            <div id="vue-app-one">
+                <div class="head">
+                    Multiple vue instances
+                </div>
+                <div class="head head-small">
+                    EX.1
+                </div>
+                <div class="box-con">
+                    <div class="code">
+                        var one = new Vue({<br> el: '#vue-app-one',<br> data: {<br> title: "This is a 'vue-app-one'"<br> },
+                        <br> methods: {<br> changeTitle: function() {<br> two.title = "Successful change the title"<br> }
+                        <br> },
+                        <br> computed: {<br> greet: function() {<br> return "Welcome"<br> } } })
+                    </div>
+
+
+                    <h4>{{title}}</h4>
+                    <p>{{greet}}</p>
+                    <button v-on:click="changeTitle()">Change title in vue-app-two</button>
+
+                </div>
+            </div>
+            <div id="vue-app-two">
+                <div class="head head-small">
+                    EX.2
+                </div>
+                <div class="box-con">
+                    <div class="code">var two = new Vue({<br> el: '#vue-app-two',<br> data: {<br> title: "This is a 'vue-app-two'"<br> },
+                        <br> methods: {<br> },
+
+                        <br> computed: {<br> greet: function() {<br> return "Yooo"<br> } } })
+
+                    </div>
+
+
+                    <h4>{{title}}</h4>
+                    <p>{{greet}}</p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="new-instance-box" id="vue-app-three">
+
+        <div class="box-example">
+            <div class="head">
+                Intro to components
+
+            </div>
+            <div class="head head-small">
+                EX.1
+            </div>
+            <div class="box-con">
+                <div class="code">
+                    Vue.component("greeting", {<br> template: "
+                    < p>Siemka { {name} }
+                        < button v-on:click='changeName()'>Change Name
+                            < /button>
+                            </ p>",<br> data: function() {<br> return {<br> name: "Robert"<br> }
+                            <br> },
+                            <br> methods: {<br> changeName: function() {<br> this.name = "Haba"<br> }
+                            <br> }
+                            <br> });
+                </div>
+
+                <greeting></greeting>
+
+            </div>
+
+
+        </div>
+        <div class="box-example">
+            <div class="head">
+                Refs
+            </div>
+            <div class="head head-small">
+                EX.1
+            </div>
+            <div class="box-con">
+                <div class="code">
+
+                    var three = new Vue({<br> el: '#vue-app-three',<br> data: {<br> refInput: "Siemka "<br> },
+                    <br> methods: {<br> getRef: function() {<br> this.refInput = this.$refs.inputRef.value<br> }
+                    <br> } })
+                </div>
+
+                <input type="text" ref="inputRef" />
+                <button v-on:click="getRef()">Start</button>
+                <p>{{refInput}}</p>
+
+
+            </div>
+
+
+        </div>
+        <div class="box-example">
+            <div class="head">
+                Header
+            </div>
+            <div class="head head-small">
+                EX.1
+            </div>
+            <div class="box-con">
+                <div class="code">Kod</div>
+
+                <p>Przykład</p>
+                <button>Start</button>
+                <button class="btn-right">btn-right</button>
+
+            </div>
+            <div class="head head-small">
+                EX.2
+            </div>
+            <div class="box-con">
+                <div class="code">Kod</div>
+
+                <p>Przykład</p>
+                <button>Start</button>
+                <button class="btn-right">btn-right</button>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="help-code">
+        <div class="box-example">
+
+
+
+
+
+
+
+
+
+            <button onclick="getCode(this)">Get Code</button>
+            <textarea class="copyArea">
+                    <div class="box-example">
+                            <div class="head">
+                                Header
+                            </div>
+                            <div class="head head-small">
+                                EX.1
+                            </div>
+                            <div class="box-con">
+                                <div class="code">Kod</div>
+                               
+                                <p>Przykład</p>
+                                <button>Start</button>
+                                <button class="btn-right">btn-right</button>
+                
+                            </div>
+                            <div class="head head-small">
+                                EX.2
+                            </div>
+                            <div class="box-con">
+                                <div class="code">Kod</div>
+                                
+                                <p>Przykład</p>
+                                <button>Start</button>
+                                <button class="btn-right">btn-right</button>
+                
+                            </div>
+                
+                        </div>
+            </textarea>
+        </div>
+
+    </div>
+    <script src="app.js"></script>
+
+    <script>
+        document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+    </script>
+</body>
+
+</html>
