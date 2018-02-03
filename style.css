@@ -791,7 +791,7 @@ a:visited {
     }
 }
 
-@media screen and (max-height: 700px) {
+@media screen and (max-height: 700px) and (max-width:1250px) {
     .logo-name {
         top: 80%;
     }
