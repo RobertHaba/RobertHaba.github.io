@@ -14,7 +14,7 @@
 
     <main>
         <header id="nav-section">
-            <h1 class="logo">LOGO</h1>
+            <h1 class="logo">HABA</h1>
             <nav id="main-nav">
                 <ul>
                     <li>Projekty</li>
@@ -277,18 +277,23 @@
                     <p>
                         Nie czekaj!Skontaktuj się już dziś.
                     </p>
-                    <form v-on:submit.prevent="getRef">
+                    <form id="contact-form" v-on:submit.prevent="getRef">
                         <span>
                             <input type="email" class="email-input" placeholder="Twój email..." ref="emailRef" v-model="newUser.email">
-                            <input type="text" class="title-input" placeholder="Tytuł..." ref="titleRef" v-model="newUser.title">
+                            <input type="text" class="title-input" placeholder="Tytuł (minimum 3 znaki)" ref="titleRef" v-model="newUser.title">
                         </span>
 
-                        <textarea placeholder="Treść wiadomości..." ref="messageRef"></textarea>
+                        <textarea placeholder="Treść wiadomości (minimum 3 znaki)" ref="messageRef"></textarea>
 
                         <input type="submit" class="btn-form" value="Wyślij">
                     </form>
 
                 </div>
+                <div class="pop-up">
+                    <h3>Twoja wiadomośc została wysłana</h3>
+
+                </div>
+
             </article>
         </section>
 

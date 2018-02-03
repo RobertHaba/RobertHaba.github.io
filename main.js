@@ -41,33 +41,66 @@ new Vue({
     },
     methods: {
         getRef: function() {
+
+
             if (this.isValid) {
-                var convertEmail = this.newUser.email.split(".");
-                var date = new Date()
-                var currentdate = new Date();
-                var datetime = " | Data " + currentdate.getDate() + "-" +
-                    (currentdate.getMonth() + 1) + "-" +
-                    currentdate.getFullYear() + " |Godzina " +
-                    currentdate.getHours()
+                document.getElementsByClassName('email-input')[0].className = 'email-input';
+                if (this.$refs.titleRef.value.length >= 3 && this.$refs.messageRef.value.length >= 3) {
+
+                    document.getElementsByClassName('title-input')[0].className = 'title-input';
+                    document.getElementsByTagName('textarea')[0].className = '';
+
+                    var convertEmail = this.newUser.email.split(".");
+                    var date = new Date()
+                    var currentdate = new Date();
+                    var datetime = " | Data " + currentdate.getDate() + "-" +
+                        (currentdate.getMonth() + 1) + "-" +
+                        currentdate.getFullYear() + " |Godzina " +
+                        currentdate.getHours()
 
 
-                var newEmail = ""
-                for (a in convertEmail) {
-                    newEmail = newEmail + "," + convertEmail[a]
+                    var newEmail = ""
+                    for (a in convertEmail) {
+                        newEmail = newEmail + "," + convertEmail[a]
+                    }
+
+                    this.newUser.email = this.$refs.emailRef.value
+                    this.newUser.title = this.$refs.titleRef.value
+                    this.newUser.message = this.$refs.messageRef.value
+                    var dataBaseName = firebase.database().ref(newEmail + datetime)
+                    dataBaseName.push(this.newUser.title)
+                    dataBaseName.push(this.newUser.message)
+                    document.getElementById('contact-form').reset()
+                    popUp()
+                } else {
+                    if (this.$refs.titleRef.value.length < 3) {
+                        document.getElementsByClassName('title-input')[0].className = 'title-input validation-error';
+                    } else {
+                        document.getElementsByClassName('title-input')[0].className = 'title-input';
+                    }
+                    if (this.$refs.messageRef.value.length < 3) {
+                        document.getElementsByTagName('textarea')[0].className = 'validation-error';
+                    } else {
+                        document.getElementsByTagName('textarea')[0].className = '';
+                    }
                 }
-
-                this.newUser.email = this.$refs.emailRef.value
-                this.newUser.title = this.$refs.titleRef.value
-                this.newUser.message = this.$refs.messageRef.value
-                var dataBaseName = firebase.database().ref(newEmail + datetime)
-                dataBaseName.push(this.newUser.title)
-                dataBaseName.push(this.newUser.message)
             } else {
 
-                console.log(emailRE.test(this.email))
+
+                document.getElementsByClassName('email-input')[0].className = 'email-input validation-error';
 
             }
+
+
 
         }
     }
 })
+
+
+function popUp() {
+    document.getElementsByClassName('pop-up')[0].style.display = "block";
+    setTimeout(function() {
+        document.getElementsByClassName('pop-up')[0].style.display = "none";
+    }, 2000)
+}

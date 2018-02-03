@@ -717,6 +717,28 @@ a:visited {
     color: #FFF;
 }
 
+.validation-error {
+    background-image: url('img/icons/error.svg');
+    background-size: 15px 15px;
+    background-position: 5px;
+    background-repeat: no-repeat;
+    padding-left: 25px;
+}
+
+.pop-up {
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-left: 2px solid #DF4054;
+    color: #DF4054;
+    right: 0px;
+    top: 70px;
+    z-index: 10;
+    position: fixed;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    display: none;
+}
+
 @media screen and (max-width: 1250px) {
     #welcome-section {
         background-size: inherit;
