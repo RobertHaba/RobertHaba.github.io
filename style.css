@@ -790,3 +790,9 @@ a:visited {
         height: 150px;
     }
 }
+
+@media screen and (max-height: 700px) {
+    .logo-name {
+        top: 80%;
+    }
+}
