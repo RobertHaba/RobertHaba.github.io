@@ -104,3 +104,11 @@ function popUp() {
         document.getElementsByClassName('pop-up')[0].style.display = "none";
     }, 2000)
 }
+
+function mobileMenu() {
+    var menuEl = document.getElementById('main-nav');
+    menuEl.style.display = (menuEl.style.display == 'flex') ? 'none' : 'flex';
+
+
+
+}

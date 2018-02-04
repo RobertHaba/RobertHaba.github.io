@@ -783,6 +783,28 @@ a:visited {
 }
 
 @media screen and (max-width: 500px) {
+    .hamburger-menu {
+        right: 20px;
+        position: absolute;
+        color: #66636b;
+        font-family: 'Montserrat';
+        font-size: 25px;
+    }
+    #main-nav {
+        flex-direction: column;
+        position: fixed;
+        top: 50px;
+        width: 100%;
+        display: none;
+    }
+    #main-nav ul {
+        flex-direction: column;
+        background-color: #2d253a;
+        align-items: center;
+    }
+    #main-nav li {
+        padding: 15px;
+    }
     .logo-name {
         font-size: 30px;
     }
@@ -817,4 +839,17 @@ a:visited {
     .logo-name {
         top: 80%;
     }
+}
+
+.btn-inline a:link,
+.btn-inline a:visited {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.project-hover:hover .btn-proj-hover:hover {
+    background-color: #FFF;
+    border: 2px solid #DF4054;
+    padding: 4px 8px;
+    color: #DF4054;
 }
