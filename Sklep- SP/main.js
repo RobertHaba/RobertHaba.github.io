@@ -61,3 +61,8 @@ function scrollFunction() {
         }
     })
 }
+
+function mobileMenu() {
+    var buttonMobileMenu = document.querySelectorAll('.m-nav')[0];
+    buttonMobileMenu.style.display = (buttonMobileMenu.style.display == 'flex') ? "none" : "flex"
+}
