@@ -684,6 +684,10 @@ a:visited {
     padding-bottom: 4px;
 }
 
+.mobile-nav {
+    display: none;
+}
+
 @media (max-width:1300px) {
     .dis-block {
         display: block;
@@ -740,16 +744,21 @@ a:visited {
     .m-news-container-box {
         flex-direction: column;
     }
+    .m-nav {
+        display: flex;
+    }
 }
 
 @media (max-width:750px) {
     .mobile-nav {
-        background-color: red;
+        border: 1px solid #DDD;
         width: 50px;
         height: 50px;
         cursor: pointer;
         position: fixed;
         right: 0px;
+        display: flex;
+        font-size: 25px;
     }
     .m-nav {
         width: 100%;

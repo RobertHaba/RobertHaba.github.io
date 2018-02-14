@@ -61,6 +61,14 @@ function scrollFunction() {
         }
     })
 }
+var nav = document.querySelectorAll('.m-nav')[0];
+window.onresize = function(ev) {
+
+
+    if (ev.target.innerWidth >= "751" && nav.style.display == "none") {
+        nav.style.display = "flex"
+    }
+}
 
 function mobileMenu() {
     var buttonMobileMenu = document.querySelectorAll('.m-nav')[0];
