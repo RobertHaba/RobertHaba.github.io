@@ -848,4 +848,8 @@ a:visited {
     .tile {
         padding: 20px 0px;
     }
+    .sale-r-column {
+        flex-direction: column;
+        overflow-x: auto;
+    }
 }
