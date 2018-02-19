@@ -8,6 +8,12 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat|Open+Sans|Roboto" rel="stylesheet">
     <title>SerwisMan</title>
+    <style>
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
@@ -51,7 +57,7 @@
                     </p>
                 </div>
                 <div class="info-box flex-center">
-                    <h2 class="f-w-bold f-c-orange f-s-big">Z czym wiązą się nasze usługi?</h2>
+                    <h2 class="f-w-bold f-c-orange f-s-big">Z czym wiążą się nasze usługi?</h2>
 
                 </div>
 
@@ -136,7 +142,7 @@
                 <div class="box-layout flex-center f-c-light">
                     <div class="tile-small flex-center flex-column">
                         <img class="i-big" src="./img/icons/computer.svg" alt="computer">
-                        <h2>Komuterów</h2>
+                        <h2>Komputerów</h2>
                     </div>
                     <a href="https://allegro.pl/uzytkownik/serwisman_com/czesci-do-laptopow-77801?order=m">
                         <div class="tile-small flex-center flex-column">
@@ -262,7 +268,7 @@
                         </ul>
                     </div>
                     <div class="info-box flex-center">
-                        <button class="btn-more f-c-orange f-s-normal">Sprawdż wszystkie ceny</button>
+                        <button class="btn-more f-c-orange f-s-normal">Sprawdź wszystkie ceny</button>
                     </div>
 
 
@@ -271,7 +277,7 @@
         </section>
         <footer class="footer-sec">
             <div class="map">
-
+                <div id="map"></div>
             </div>
             <div class="form-box flex-j-center">
 
@@ -306,7 +312,135 @@
             </div>
         </footer>
     </main>
+    <script>
+        function initMap() {
+            var uluru = {
+                lat: -25.363,
+                lng: 131.044
+            };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: uluru,
+                styles: [{
+                    "featureType": "all",
+                    "elementType": "labels.text.fill",
+                    "stylers": [{
+                        "saturation": 36
+                    }, {
+                        "color": "#000000"
+                    }, {
+                        "lightness": 40
+                    }]
+                }, {
+                    "featureType": "all",
+                    "elementType": "labels.text.stroke",
+                    "stylers": [{
+                        "visibility": "on"
+                    }, {
+                        "color": "#000000"
+                    }, {
+                        "lightness": 16
+                    }]
+                }, {
+                    "featureType": "all",
+                    "elementType": "labels.icon",
+                    "stylers": [{
+                        "visibility": "off"
+                    }]
+                }, {
+                    "featureType": "administrative",
+                    "elementType": "geometry.fill",
+                    "stylers": [{
+                        "color": "#000000"
+                    }, {
+                        "lightness": 20
+                    }]
+                }, {
+                    "featureType": "administrative",
+                    "elementType": "geometry.stroke",
+                    "stylers": [{
+                        "color": "#000000"
+                    }, {
+                        "lightness": 17
+                    }, {
+                        "weight": 1.2
+                    }]
+                }, {
+                    "featureType": "landscape",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#000000"
+                    }, {
+                        "lightness": 20
+                    }]
+                }, {
+                    "featureType": "poi",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#000000"
+                    }, {
+                        "lightness": 21
+                    }]
+                }, {
+                    "featureType": "road.highway",
+                    "elementType": "geometry.fill",
+                    "stylers": [{
+                        "color": "#000000"
+                    }, {
+                        "lightness": 17
+                    }]
+                }, {
+                    "featureType": "road.highway",
+                    "elementType": "geometry.stroke",
+                    "stylers": [{
+                        "color": "#000000"
+                    }, {
+                        "lightness": 29
+                    }, {
+                        "weight": 0.2
+                    }]
+                }, {
+                    "featureType": "road.arterial",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#000000"
+                    }, {
+                        "lightness": 18
+                    }]
+                }, {
+                    "featureType": "road.local",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#000000"
+                    }, {
+                        "lightness": 16
+                    }]
+                }, {
+                    "featureType": "transit",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#000000"
+                    }, {
+                        "lightness": 19
+                    }]
+                }, {
+                    "featureType": "water",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#494e51"
+                    }, {
+                        "lightness": 17
+                    }]
+                }]
 
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtcCMcAxapEqyov_Ct0UhFkkDbYI5dPjU&callback=initMap" type="text/javascript"></script>
     <script>
         document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
     </script>
