@@ -201,7 +201,7 @@
                 </div>
             </div>
         </section>
-        <section class="price-sec flex-center">
+        <section class="price-sec flex-center" id="price">
             <div class="box-layout">
                 <div class="info-box flex-center">
                     <h2 class="f-c-orange f-w-bold f-s-big">Najczęściej wybierane usługi</h2>
@@ -268,8 +268,16 @@
                         </ul>
                     </div>
                     <div class="info-box flex-center">
-                        <button class="btn-more f-c-orange f-s-normal">Sprawdź wszystkie ceny</button>
+                        <button class="btn-more f-c-orange f-s-normal" @click="showPopup = true">Sprawdź wszystkie ceny</button>
                     </div>
+
+                    <modal v-if="showPopup" @close="showPopup = false">
+                        <!--
+                            you can use custom content here to overwrite
+                            default content
+                          -->
+                        <h3 slot="header">Cennik</h3>
+                    </modal>
 
 
                 </div>
@@ -304,6 +312,7 @@
                         <button type="submit" class="submit-btn">
                                     Wyślij
                             </button>
+
                     </div>
                 </form>
             </div>
@@ -312,6 +321,132 @@
             </div>
         </footer>
     </main>
+    <script type="text/x-template" id="modal-template">
+        <transition name="modal">
+            <div class="modal-mask">
+                <div class="modal-wrapper">
+                    <div class="modal-container">
+
+                        <div class="modal-header">
+                            <slot name="header">
+                                Cennik
+                            </slot>
+                        </div>
+
+                        <div class="modal-body">
+                            <slot name="body">
+                                <table class="price-services">
+                                    <thead>
+                                        <tr>
+                                            <td>Nazwa i rodzaj usługi</td>
+                                            <td>Szacowanca cena usługi</td>
+                                        </tr>
+
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Diagnoza / kosztorys naprawczy </td>
+                                            <td>BEZPŁATNIE</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Instalacja systemu Windows + sterowniki + konfiguracja systemu </td>
+                                            <td>100zł</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Pakiet instalacji Windows + zachowanie danych </td>
+                                            <td>od 120zł </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Czyszczenie i konserwacja komputera LAPTOP / PC </td>
+                                            <td>80zł </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Odwirusowanie komputera / laptopa (zachowane dane) </td>
+                                            <td>od 80zł </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Instalacja routera, konfiguracja sieci bezprzewodowej </td>
+                                            <td>60zł </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Optymalizacja komputera (przyśpieszenie komputera) </td>
+                                            <td>od 70zł </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Wgranie oprogramowania lub sterowników </td>
+                                            <td>od 30zł </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Odblokowanie konta Windows zabezpieczonego hasłem (XP, Vista, 7, 8, 10) </td>
+                                            <td>70zł </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Odblokowanie konta Windows zabezpieczonego hasłem (XP, Vista, 7, 8, 10) </td>
+                                            <td>70zł </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Czyszczenie laptopa (wyczyszczenie wiatraków, wymiana pasty oraz termopadów) </td>
+                                            <td>80zł </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Naprawa Laptopa po zalaniu </td>
+                                            <td>od 150zł </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Naprawa płyty głównej Laptopa </td>
+                                            <td>od 150zł </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Wymiana gniazda zasilania </td>
+                                            <td>od 100zł </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Wymiana matrycy, problemy z podświetleniem ekranu </td>
+                                            <td>od 80zł </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Upgrade (aktualizacja) BIOS-u </td>
+                                            <td>od 40zł </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Odzyskiwanie danych z każdego nośnika </td>
+                                            <td>od 100zł </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Klonowanie zawartości dysku na nowy dysk </td>
+                                            <td>od 60zł </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Wymiana uszkodzonej części w laptopie (klawiatury, dyski, pamięci, napędy CD/DVD) </td>
+                                            <td>70zł </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Projektowanie, montaż i konfiguracja małych sieci komputerowych LAN </td>
+                                            <td>od 100zł </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Stworzenie j strony internetowej lub wizytówki </td>
+                                            <td>od 150zł </td>
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </slot>
+                        </div>
+
+                        <div class="modal-footer flex-center">
+
+                            <button class="btn-more f-c-orange bg-c-white f-s-normal" @click="$emit('close')">
+                                        Zamknij
+                                 </button>
+                            </slot>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </transition>
+    </script>
     <script>
         function initMap() {
             var uluru = {
@@ -440,9 +575,12 @@
             });
         }
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtcCMcAxapEqyov_Ct0UhFkkDbYI5dPjU&callback=initMap" type="text/javascript"></script>
     <script>
         document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+    </script>
+    <script src="main.js">
     </script>
 </body>
 
