@@ -6,6 +6,21 @@ Vue.component('modal', {
 new Vue({
     el: '#price',
     data: {
-        showPopup: false
+        showPopup: false,
+        scroll: 'hidden'
+
+    },
+    methods: {
+        stopScroll: function() {
+            console.log(this.scroll)
+            document.getElementsByTagName('body')[0].style.overflow = this.scroll;
+
+        }
+
     }
+
 })
+
+function showScroll() {
+    document.getElementsByTagName('body')[0].style.overflow = 'auto';
+}

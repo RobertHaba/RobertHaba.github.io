@@ -268,7 +268,7 @@
                         </ul>
                     </div>
                     <div class="info-box flex-center">
-                        <button class="btn-more f-c-orange f-s-normal" @click="showPopup = true">Sprawdź wszystkie ceny</button>
+                        <button class="btn-more f-c-orange f-s-normal" @click="showPopup = true; stopScroll(); scroll = 'hidden'">Sprawdź wszystkie ceny</button>
                     </div>
 
                     <modal v-if="showPopup" @close="showPopup = false">
@@ -437,7 +437,7 @@
 
                         <div class="modal-footer flex-center">
 
-                            <button class="btn-more f-c-orange bg-c-white f-s-normal" @click="$emit('close')">
+                            <button class="btn-more f-c-orange bg-c-white f-s-normal" onclick="showScroll()" @click="$emit('close');">
                                         Zamknij
                                  </button>
                             </slot>
@@ -446,6 +446,7 @@
                 </div>
             </div>
         </transition>
+
     </script>
     <script>
         function initMap() {
