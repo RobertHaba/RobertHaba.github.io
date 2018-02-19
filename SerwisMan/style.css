@@ -453,13 +453,15 @@ button {
 .example-services {
     height: 75%;
     background-color: #FFF;
+    display: flex;
+    flex-direction: column;
 }
 
-.example-services td {
-    justify-content: center;
-    text-align: center;
+.example-services li {
     height: 100%;
     display: flex;
+    justify-content: center;
+    text-align: center;
     align-items: center;
     border-bottom: 1px solid #DDD;
 }
