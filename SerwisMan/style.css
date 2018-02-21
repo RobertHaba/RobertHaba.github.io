@@ -851,6 +851,11 @@ body::-webkit-scrollbar-thumb,
         overflow: auto;
         height: 100%;
     }
+    .modal-column li {
+        text-align: center;
+        margin-top: 12px;
+        list-style-type: none;
+    }
 }
 
 @media screen and (max-width: 720px) {
