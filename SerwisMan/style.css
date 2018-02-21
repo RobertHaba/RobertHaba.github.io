@@ -908,4 +908,7 @@ body::-webkit-scrollbar-thumb,
     .modal-menu-item:hover>.model-menu-item-content {
         display: none;
     }
+    h2 {
+        text-align: center;
+    }
 }
