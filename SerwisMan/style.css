@@ -342,6 +342,7 @@ button {
     max-height: 30px;
     border: 1px solid #FFA500;
     margin: 0 auto;
+    cursor: pointer;
 }
 
 
@@ -408,6 +409,7 @@ button {
 .tile-small {
     width: 150px;
     height: auto;
+    margin-top: 15px;
 }
 
 .tile-big {
@@ -554,7 +556,8 @@ label {
 
 */
 
-.modal-mask {
+.modal-mask,
+.modal-mask2 {
     position: fixed;
     z-index: 9998;
     top: 0;
@@ -584,7 +587,7 @@ label {
     transition: all .3s ease;
 }
 
-.modal-header h3 {
+.modal-name h3 {
     margin-top: 0;
     color: #444;
     font-size: 18px;
@@ -622,14 +625,6 @@ label {
    * You can easily play with the modal transition by editing
    * these styles.
    */
-
-.modal-enter {
-    opacity: 0;
-}
-
-.modal-leave-active {
-    opacity: 0;
-}
 
 .modal-enter .modal-container,
 .modal-leave-active .modal-container {
@@ -680,6 +675,129 @@ label {
     border-right: 1px solid #333;
 }
 
+.modal-enter,
+.modal-leave-active,
+.modal-template-enter,
+.modal-template-leave-active {
+    opacity: 0;
+}
+
+
+/*
+
+    Modal services
+
+*/
+
+.modal-template-enter .modal-window,
+.modal-template-leave-active .modal-window {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.modal-mask2 {
+    display: flex;
+    align-items: center;
+}
+
+.modal-window {
+    background-color: #FFF;
+    width: 90%;
+    max-width: 1400px;
+    height: 90%;
+    max-height: 700px;
+    margin: 0 auto;
+    position: relative;
+    transition: all .3s ease;
+}
+
+.modal-header {
+    width: 50px;
+    height: 100%;
+    background-color: #FFF;
+    z-index: 50;
+}
+
+.modal-menu {
+    height: 100%;
+}
+
+.modal-menu-item {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.modal-menu-item img {
+    width: 30px;
+    height: 30px;
+}
+
+.modal-menu-item:hover {
+    background-color: #FFA500;
+}
+
+.model-menu-item-content {
+    display: none;
+}
+
+.modal-menu-item:hover>.model-menu-item-content {
+    display: block;
+    position: absolute;
+    left: 50px;
+    background-color: #FFA500;
+    height: 50px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+}
+
+.modal-content {
+    position: relative;
+    width: calc(100% - 50px);
+    height: 100%;
+}
+
+.modal-layout {
+    max-width: 1400px;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-column {
+    width: 50%;
+    height: 100%;
+    max-height: inherit;
+    overflow: hidden;
+}
+
+.modal-column li {
+    list-style-type: disc;
+    color: #555;
+}
+
+.modal-column img {
+    max-width: 1300px;
+    max-height: 900px;
+}
+
+.modal-close-sec {
+    width: 50px;
+    height: 50px;
+}
+
+.btn-square {
+    width: 100%;
+    height: 100%;
+    color: #222222;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
+}
+
 
 /* 
 
@@ -688,18 +806,92 @@ label {
 */
 
 body::-webkit-scrollbar-track,
-.modal-container::-webkit-scrollbar-track {
+.modal-container::-webkit-scrollbar-track,
+.modal-column:last-child::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #F5F5F5;
 }
 
 body::-webkit-scrollbar,
-.modal-container::-webkit-scrollbar {
+.modal-container::-webkit-scrollbar,
+.modal-column:last-child::-webkit-scrollbar {
     width: 10px;
     background-color: #F5F5F5;
 }
 
 body::-webkit-scrollbar-thumb,
-.modal-container::-webkit-scrollbar-thumb {
+.modal-container::-webkit-scrollbar-thumb,
+.modal-column:last-child::-webkit-scrollbar-thumb {
     background-color: #FFA500;
+}
+
+@media screen and (max-width: 1200px) {
+    .modal-window {
+        width: 100%;
+        height: 100%;
+        max-height: 700px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .modal-window {
+        max-height: 100%;
+    }
+    .modal-layout {
+        display: flex;
+        flex-direction: column;
+    }
+    .modal-column {
+        width: 100%;
+    }
+    .modal-column:last-child {
+        overflow: auto;
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .rwd-help-services {
+        justify-content: center;
+    }
+    .price-services tr {
+        display: flex;
+        flex-direction: column;
+    }
+    .price-services thead td:first-child,
+    .price-services thead td:last-child,
+    .price-services tbody td:first-child,
+    .price-services tr>td:last-child {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+    }
+    .price-services tbody td:first-child,
+    .price-services tbody td:last-child {
+        border-left: 1px solid #DDD;
+        border-right: 1px solid #DDD;
+    }
+    .price-services tbody td:first-child {
+        background-color: #F9F9F9;
+    }
+    .price-services thead td:last-child {
+        background-color: #555;
+    }
+    .price-services tbody td:last-child {
+        display: flex;
+        background-color: #FFF;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .rwd-allegro-icons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 }

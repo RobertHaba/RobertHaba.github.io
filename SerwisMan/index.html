@@ -44,7 +44,7 @@
         <section class="sec-content">
             <img class="img-f" src="./img/motherboard.jpg" alt="motherboard">
         </section>
-        <section class="sec-about flex-j-center ">
+        <section class="sec-about flex-j-center " id="services">
             <div class="box-layout flex-column ">
                 <div class="info-box flex-center">
                     <h2 class="f-w-bold f-c-orange f-s-big">Czym się zajmujemy?</h2>
@@ -62,7 +62,7 @@
                 </div>
 
 
-                <div class="text-box flex-j-bet flex-wrap">
+                <div class="text-box flex-j-bet flex-wrap rwd-help-services">
                     <div class="tile-con flex-column flex-a-center">
                         <div class="half-box flex-column flex-j-around flex-a-center">
                             <img class="i-big" src="./img/icons/laptop.svg" alt="laptop">
@@ -125,13 +125,16 @@
                         </div>
                     </div>
                     <div class="text-box flex-center">
-                        <button class="btn-more f-s-normal f-c-orange">
+                        <button @click="showWindow = true" class="btn-more f-s-normal f-c-orange">
                             Dowiedz się więcej
                         </button>
                     </div>
 
                 </div>
             </div>
+            <services v-if="showWindow" @close="showWindow = false">
+
+            </services>
         </section>
         <section class="allegro-sec">
             <div class="info-box flex-center">
@@ -139,7 +142,7 @@
             </div>
             <div class="text-box flex-column flex-center">
                 <p style="margin-bottom:15px">Na naszych aukcjach możesz spotkać sporo podzespołów między innymi do:</p>
-                <div class="box-layout flex-center f-c-light">
+                <div class="box-layout flex-center f-c-light flex-wrap rwd-allegro-icons">
                     <div class="tile-small flex-center flex-column">
                         <img class="i-big" src="./img/icons/computer.svg" alt="computer">
                         <h2>Komputerów</h2>
@@ -272,10 +275,7 @@
                     </div>
 
                     <modal v-if="showPopup" @close="showPopup = false">
-                        <!--
-                            you can use custom content here to overwrite
-                            default content
-                          -->
+
                         <h3 slot="header">Cennik</h3>
                     </modal>
 
@@ -327,7 +327,7 @@
                 <div class="modal-wrapper">
                     <div class="modal-container">
 
-                        <div class="modal-header">
+                        <div class="modal-name">
                             <slot name="header">
                                 Cennik
                             </slot>
@@ -447,6 +447,69 @@
             </div>
         </transition>
 
+    </script>
+    <script type="text/x-template" id="modal-services">
+        <transition name="modal-template">
+            <div class="modal-mask2 flex-center">
+                <div class="modal-window flex">
+                    <div class="modal-header">
+                        <div class="modal-close-sec">
+                            <button class="btn-square" onclick="showScroll()" @click="$emit('close');">
+                                        X
+                                 </button>
+                        </div>
+                        <div class="modal-menu flex-center">
+                            <ul>
+                                <li class="bg-c-orange modal-menu-item flex-center" @click="vueServices.clickModalMenu(0),vueServices.content.header = 'Usługi dotyczące laptopów', vueServices.content.imgSrc ='./img/picture/laptop-dell.jpg', vueServices.pushLaptop()">
+                                    <img src="./img/icons/notebook.svg" alt="laptop">
+                                    <div class="model-menu-item-content">Laptopy</div>
+                                </li>
+                                <li class="modal-menu-item flex-center" @click="vueServices.clickModalMenu(1),vueServices.content.header = 'Usługi dotyczące telewizorów', vueServices.content.imgSrc ='./img/picture/tv.jpg',vueServices.pushTv()">
+                                    <img src="./img/icons/smart-tv.svg" alt="tv">
+                                    <div class="model-menu-item-content">Telewizory</div>
+                                </li>
+                                <li class="modal-menu-item flex-center" @click="vueServices.clickModalMenu(2),vueServices.content.header = 'Usługi dotyczące telefonów', vueServices.content.imgSrc ='./img/picture/smartphone.jpg',vueServices.pushPhone()">
+                                    <img src="./img/icons/smartphone3.svg" alt="phone">
+                                    <div class="model-menu-item-content">Telefony</div>
+                                </li>
+                                <li class="modal-menu-item flex-center" @click="vueServices.clickModalMenu(3),vueServices.content.header = 'Usługi dotyczące systemów operacyjnych', vueServices.content.imgSrc ='./img/picture/system.jpg',vueServices.pushSystem()">
+                                    <img src="./img/icons/windows.svg" alt="windows logo">
+                                    <div class="model-menu-item-content">Systemy</div>
+                                </li>
+                                <li class="modal-menu-item flex-center" @click="vueServices.clickModalMenu(4),vueServices.content.header = 'Usługi dotyczące komputerów', vueServices.content.imgSrc ='./img/picture/computer.jpg',vueServices.pushComputer()">
+                                    <img src="./img/icons/pc.svg" alt="pc">
+                                    <div class="model-menu-item-content">Komputery</div>
+                                </li>
+                                <li class="modal-menu-item flex-center" @click="vueServices.clickModalMenu(5),vueServices.content.header = 'Inne usługi', vueServices.content.imgSrc ='./img/picture/other.jpg', vueServices.pushOthers()">
+                                    <img src="./img/icons/elipsis.svg" alt="others">
+                                    <div class="model-menu-item-content">Inne</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="modal-content flex-center">
+                        <div class="modal-layout flex-center">
+                            <div class="modal-column ">
+                                <img :src="vueServices.content.imgSrc" alt="dell">
+                            </div>
+                            <div class="modal-column">
+                                <div class="info-box flex-center">
+                                    <h2 class="f-c-light-dark f-s-big f-w-bold ">{{vueServices.content.header}}</h2>
+                                </div>
+                                <div class="text-box flex-center">
+                                    <ul>
+                                        <li v-for="services in vueServices.content.services">{{services.text}}</li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </transition>
     </script>
     <script>
         function initMap() {
