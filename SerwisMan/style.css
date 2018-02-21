@@ -902,4 +902,10 @@ body::-webkit-scrollbar-thumb,
         align-items: center;
         justify-content: center;
     }
+    .modal-column h2 {
+        text-align: center;
+    }
+    .modal-menu-item:hover>.model-menu-item-content {
+        display: none;
+    }
 }
