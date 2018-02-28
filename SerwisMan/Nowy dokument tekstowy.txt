@@ -1,0 +1,10 @@
+ <section class="partner-sec flex-j-center">
+            <div class="box-layout flex-column flex-a-center">
+                <div class="info-box flex-center">
+                    <h2 class="f-c-d f-w-bold f-s-big">Nasz oficjalny partner</h2>
+                </div>
+                <div class="text-box flex-center">
+                    <img class="i-big" src="./img/icons/dell.png" alt="logo dell">
+                </div>
+            </div>
+        </section>

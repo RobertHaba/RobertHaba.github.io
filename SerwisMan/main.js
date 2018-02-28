@@ -32,7 +32,8 @@ var vueServices = new Vue({
                 imgSrc: './img/picture/laptop-dell.jpg',
                 services: [
 
-                ]
+                ],
+
             }
         },
         methods: {

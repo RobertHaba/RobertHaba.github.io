@@ -200,16 +200,9 @@
                 </div>
             </div>
         </section>
-        <section class="partner-sec flex-j-center">
-            <div class="box-layout flex-column flex-a-center">
-                <div class="info-box flex-center">
-                    <h2 class="f-c-d f-w-bold f-s-big">Nasz oficjalny partner</h2>
-                </div>
-                <div class="text-box flex-center">
-                    <img class="i-big" src="./img/icons/dell.png" alt="logo dell">
-                </div>
-            </div>
-        </section>
+        <!--
+  Partner sec
+        -->
         <section class="price-sec flex-center" id="price">
             <div class="box-layout">
                 <div class="info-box flex-center">
@@ -474,11 +467,11 @@
                                     <img src="./img/icons/smart-tv.svg" alt="tv">
                                     <div class="model-menu-item-content">Telewizory</div>
                                 </li>
-                                <li class="modal-menu-item flex-center" @click="vueServices.clickModalMenu(2),vueServices.content.header = 'Usługi dotyczące telefonów', vueServices.content.imgSrc ='./img/picture/smartphone.jpg',vueServices.pushPhone()">
+                                <li class="modal-menu-item flex-center" @click="vueServices.clickModalMenu(2),vueServices.content.header = 'Usługi dotyczące stron internetowych', vueServices.content.imgSrc ='./img/picture/code.jpeg',vueServices.pushPhone()">
                                     <img src="./img/icons/smartphone3.svg" alt="phone">
-                                    <div class="model-menu-item-content">Telefony</div>
+                                    <div class="model-menu-item-content">Strony internetowe</div>
                                 </li>
-                                <li class="modal-menu-item flex-center" @click="vueServices.clickModalMenu(3),vueServices.content.header = 'Usługi dotyczące systemów operacyjnych', vueServices.content.imgSrc ='./img/picture/system.jpg',vueServices.pushSystem()">
+                                <li class="modal-menu-item flex-center" @click="vueServices.clickModalMenu(3),vueServices.content.header = 'Usługi dotyczące systemów operacyjnych', vueServices.content.imgSrc ='./img/picture/system.jpeg',vueServices.pushSystem()">
                                     <img src="./img/icons/windows.svg" alt="windows logo">
                                     <div class="model-menu-item-content">Systemy</div>
                                 </li>
@@ -496,8 +489,8 @@
 
                     <div class="modal-content flex-center">
                         <div class="modal-layout flex-center">
-                            <div class="modal-column ">
-                                <img :src="vueServices.content.imgSrc" alt="dell">
+                            <div class="modal-column " :style="{'background-image': 'url(' + vueServices.content.imgSrc  + ')' }">
+
                             </div>
                             <div class="modal-column">
                                 <div class="info-box flex-center">

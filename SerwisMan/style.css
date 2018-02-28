@@ -456,7 +456,8 @@ button {
 */
 
 .price-sec {
-    background-color: #FCFCFC;
+    background-color: #FFF;
+    /*Po dodaniu partnera zmiana koloru na FCFCFC */
     height: auto;
 }
 
@@ -781,16 +782,14 @@ label {
     height: 100%;
     max-height: inherit;
     overflow: hidden;
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
 }
 
 .modal-column li {
     list-style-type: disc;
     color: #555;
-}
-
-.modal-column img {
-    max-width: 1300px;
-    max-height: 900px;
 }
 
 .modal-close-sec {
@@ -850,12 +849,11 @@ body::-webkit-scrollbar-thumb,
         display: flex;
         flex-direction: column;
     }
-    .modal-column img {
-        width: 100%;
-        height: 100%;
-    }
     .modal-column {
         width: 100%;
+        background-size: 100% 100%;
+        background-position: 100%;
+        background-repeat: no-repeat;
     }
     .modal-content {
         overflow-y: scroll;
@@ -879,6 +877,8 @@ body::-webkit-scrollbar-thumb,
         height: auto;
         position: relative;
         top: 0px;
+        width: 100%;
+        height: 700px;
     }
     .modal-column img {
         width: auto;
@@ -1015,5 +1015,8 @@ body::-webkit-scrollbar-thumb,
     .modal-footer {
         top: 15px;
         right: 15px;
+    }
+    .btn-more {
+        max-height: 100%;
     }
 }
