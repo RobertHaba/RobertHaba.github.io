@@ -860,7 +860,7 @@ body::-webkit-scrollbar-thumb,
     .modal-content {
         overflow-y: scroll;
         height: 100vh;
-        max-height: 100vh;
+        max-height: auto;
     }
     .modal-mask2 {
         max-height: 100vh;
@@ -868,6 +868,7 @@ body::-webkit-scrollbar-thumb,
     .modal-layout {
         height: auto;
         position: relative;
+        top: 0px;
     }
     .modal-column li {
         text-align: center;
@@ -875,7 +876,13 @@ body::-webkit-scrollbar-thumb,
         list-style-type: none;
     }
     .modal-column:first-child {
-        height: 45vh;
+        height: auto;
+        position: relative;
+        top: 0px;
+    }
+    .modal-column img {
+        width: auto;
+        margin: 0 auto;
     }
     .modal-column {
         height: auto;
