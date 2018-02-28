@@ -115,3 +115,9 @@ vueServices.pushLaptop()
 function showScroll() {
     document.getElementsByTagName('body')[0].style.overflow = 'auto';
 }
+
+function menu() {
+    console.log('dasda')
+    var menuEl = document.getElementById('mainNav');
+    menuEl.style.display = (menuEl.style.display == 'flex') ? 'none' : 'flex';
+}

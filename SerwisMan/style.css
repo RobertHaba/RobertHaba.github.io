@@ -927,6 +927,58 @@ body::-webkit-scrollbar-thumb,
     }
 }
 
+.hamburger-menu {
+    display: none;
+}
+
+@media screen and (max-width:575px) {
+    .logo {
+        font-size: 25px;
+    }
+    header .box-layout {
+        flex-direction: column;
+    }
+    .nav-menu {
+        flex-direction: column;
+        width: 100%;
+    }
+    .header-m {
+        height: auto;
+    }
+    .header-row-s {
+        height: auto;
+    }
+    .header-row-s .box-layout {
+        width: 100%;
+        padding: 0;
+    }
+    #mainNav {
+        display: none;
+    }
+    .nav-item {
+        margin: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 0;
+        border-top: 1px solid #CCC;
+        background-color: rgba(199, 190, 190, 0.05);
+        color: #666;
+    }
+    .hamburger-menu {
+        display: flex;
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 60px;
+        height: 60px;
+        font-weight: bold;
+        background-color: #F7F7F7;
+        font-size: 25px;
+    }
+}
+
 @media screen and (max-width:500px) {
     .rwd-allegro-icons {
         display: flex;

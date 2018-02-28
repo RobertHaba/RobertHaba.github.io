@@ -30,7 +30,11 @@
                     </div>
                 </div>
             </div>
-            <nav class="header-row-s flex-center bg-c-white-opacity">
+            <div class="hamburger-menu flex-center" onclick="menu()">
+
+                ☰
+            </div>
+            <nav class="header-row-s flex-center bg-c-white-opacity" id="mainNav">
                 <div class="box-layout flex-j-center">
                     <ul class="nav-menu flex   f-s-small">
                         <li class="nav-item">O nas</li>
@@ -209,7 +213,7 @@
         <section class="price-sec flex-center" id="price">
             <div class="box-layout">
                 <div class="info-box flex-center">
-                    <h2 class="f-c-orange f-w-bold f-s-big">Najczęściej wybierane usługi</h2>
+                    <h2 class="f-c-orange f-w-bold f-s-big">Abonamenty dla firm </h2>
                 </div>
                 <div class="text-box flex-wrap flex-j-around">
                     <div class="tile-big shadow-light">
@@ -273,7 +277,7 @@
                         </ul>
                     </div>
                     <div class="info-box flex-center">
-                        <button class="btn-more f-c-orange f-s-normal" @click="showPopup = true; stopScroll(); scroll = 'hidden'">Sprawdź wszystkie ceny</button>
+                        <button class="btn-more f-c-orange f-s-normal" @click="showPopup = true; stopScroll(); scroll = 'hidden'">Sprawdź nasz indywidualny cennik</button>
                     </div>
 
                     <modal v-if="showPopup" @close="showPopup = false">
