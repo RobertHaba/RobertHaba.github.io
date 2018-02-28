@@ -177,8 +177,28 @@ li {
 
 */
 
+.logo {
+    font-family: 'Russo One';
+    text-shadow: 1px 1px 3px rgba(80, 79, 79, 0.795);
+    font-size: 38px;
+    color: #ff8800;
+}
+
+h2,
+h3 {
+    font-weight: bold;
+}
+
+.f-shadow {
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
+}
+
 .f-mon {
     font-family: 'Montserrat';
+}
+
+.f-c-black {
+    color: #000;
 }
 
 .f-c-d {
@@ -198,7 +218,7 @@ li {
 }
 
 .f-c-orange {
-    color: #ff8800;
+    color: #ffa500
 }
 
 .f-s-small {
@@ -215,6 +235,14 @@ li {
 
 .f-s-bigger {
     font-size: 34px;
+}
+
+.f-s-small-content {
+    font-size: 45px;
+}
+
+.f-s-content {
+    font-size: 55px;
 }
 
 .f-w-bold {
@@ -281,8 +309,23 @@ li {
 
 */
 
+.social-item {
+    height: 30px;
+    width: 30px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.social-item:hover {
+    background-color: #FFA500;
+}
+
+.number:hover {
+    color: #FFA500;
+}
+
 .shadow-light {
-    box-shadow: 0px 0px 2px 1px #AAA;
+    box-shadow: 0px 2px 4px rgb(235, 232, 232);
 }
 
 .img-f {
@@ -291,7 +334,8 @@ li {
 }
 
 a:hover,
-a:link {
+a:link,
+a:visited {
     color: inherit;
     text-decoration: none;
 }
@@ -323,6 +367,67 @@ a:link {
     height: 100px;
 }
 
+@keyframes shadow {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.shadowAnim {
+    animation: 1s linear shadow;
+    animation-fill-mode: forwards;
+}
+
+.sec-about .tile-con {
+    opacity: 0;
+}
+
+
+/*
+
+    HOVER 
+
+*/
+
+.allegro-sec a:hover {
+    animation: 0.5s allegroAnim linear;
+}
+
+.btn-more:hover {
+    color: #333;
+    border: 1px solid #333;
+    transition: 1s ease all;
+    letter-spacing: 1.5px;
+}
+
+@keyframes allegroAnim {
+    0% {
+        transform: rotate(0);
+        transition: 0.2 all;
+    }
+    25% {
+        transform: rotate(-5deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(5deg);
+    }
+    100% {
+        transform: rotate(0);
+    }
+}
+
+.nav-menu a:hover {
+    transition: all 0.3s ease;
+    padding: 5px;
+    border-bottom: 1px solid #FFA500;
+}
+
 
 /*
 
@@ -350,12 +455,6 @@ button {
     HEADER
 
 */
-
-.logo {
-    font-family: 'Russo One';
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 1);
-    font-size: 38px
-}
 
 .logo-img {
     height: 60px;
@@ -399,6 +498,13 @@ button {
     position: relative;
     top: 30px;
     height: calc(100vh - 30px);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    z-index: 5;
+}
+
+.sec-content ul li {
+    margin: 0 10px;
 }
 
 .sec-about {
@@ -431,6 +537,32 @@ button {
 
 /*
 
+    Break SEC
+
+*/
+
+.break-sec {
+    height: 300px;
+    width: 100%;
+    z-index: 5;
+    background-attachment: fixed;
+    background-image: url('./img/laptop.jpg');
+    background-size: cover;
+    background-position: 50%;
+}
+
+.news-box {
+    padding: 15px 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.desktop-pic {
+    background-image: url('./img/desktop.jpg');
+}
+
+
+/*
+
     ALLEGRO SEC
 
 */
@@ -446,6 +578,15 @@ button {
 
 .allegro-items li {
     list-style-type: disc;
+}
+
+#countAction .i-big {
+    width: 0;
+}
+
+.allegro-sec .box-layout h2,
+.allegro-sec .text-box h3 {
+    font-weight: 400;
 }
 
 
@@ -857,6 +998,7 @@ body::-webkit-scrollbar-thumb,
         background-size: cover;
         background-position: 100%;
         background-repeat: no-repeat;
+        background-attachment: fixed;
     }
     .modal-content {
         overflow-y: scroll;
@@ -890,6 +1032,19 @@ body::-webkit-scrollbar-thumb,
     .modal-column {
         height: auto;
         max-height: 100%;
+    }
+}
+
+@media screen and (max-width:810px) {
+    .sec-content ul {
+        flex-direction: column;
+    }
+    .logo {
+        font-size: 40px;
+    }
+    .sec-content li {
+        text-align: center;
+        font-size: 30px;
     }
 }
 
@@ -931,7 +1086,7 @@ body::-webkit-scrollbar-thumb,
         border-bottom: 1px solid #DDD;
         ;
     }
-    .price-services tbody tr:nth-child(2n + 1) {
+    .price-services tbody tr:nth-child(2n+1) {
         background-color: #000;
     }
 }
@@ -940,7 +1095,7 @@ body::-webkit-scrollbar-thumb,
     display: none;
 }
 
-@media screen and (max-width:625px) {
+@media screen and (max-width:645px) {
     .logo {
         font-size: 25px;
     }
@@ -953,6 +1108,9 @@ body::-webkit-scrollbar-thumb,
     }
     .header-m {
         height: auto;
+    }
+    .header-row {
+        padding-bottom: 10px;
     }
     .header-row-s {
         height: auto;
@@ -979,12 +1137,16 @@ body::-webkit-scrollbar-thumb,
         display: flex;
         position: fixed;
         right: 0;
-        top: 0;
+        top: 10px;
         width: 60px;
         height: 60px;
         font-weight: bold;
         background-color: #F7F7F7;
         font-size: 25px;
+    }
+    .nav-menu a:hover {
+        border: 0;
+        padding: 0;
     }
     .modal-column {
         width: 100%;

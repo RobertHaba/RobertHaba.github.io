@@ -22,11 +22,17 @@
         <header class="header-m f-w-bold flex-column flex-a-center ">
             <div class="header-row flex-center bg-c-white">
                 <div class="box-layout flex-a-center flex-j-bet">
-                    <h1 class="f-s-bigger">
-                        <i class="logo f-c-orange">Serwisman</i><span class="logo f-c-orange"><i class="logo">.com</i></span></h1>
-                    <div class="flex">
+                    <a href="#">
+                        <h1 class="f-s-bigger">
+                            <i class="logo f-c-black">Serwisman</i><span class="logo "><i class="logo">.com</i></span></h1>
+
+                    </a>
+                    <div class="flex flex-a-center">
+                        <a class="social-item bg-c-dark flex-center"><img class="i-normall" src="./img/icons/google-plus.svg" alt="google plus logo"></a>
+                        <a class="social-item bg-c-dark flex-center"><img class="i-normall" src="./img/icons/facebook-logo.svg" alt="facebook logo"></a>
                         <img class="i-normall" src="./img/icons/phone.svg" alt="phone icon">
-                        <a class="f-c-dark" href="tel:999999999">999-999-999</a>
+
+                        <a class="f-c-dark number" href="tel:999999999">999-999-999</a>
                     </div>
                 </div>
             </div>
@@ -37,18 +43,38 @@
             <nav class="header-row-s flex-center bg-c-white-opacity" id="mainNav">
                 <div class="box-layout flex-j-center">
                     <ul class="nav-menu flex   f-s-small">
-                        <li class="nav-item">O nas</li>
-                        <li class="nav-item">Nasze Allegro</li>
-                        <li class="nav-item">Cennik</li>
-                        <li class="nav-item">Nasze usługi</li>
-                        <li class="nav-item">Kontakt</li>
+                        <a href="#services">
+                            <li class="nav-item">O nas</li>
+                        </a>
+                        <a href="#services2">
+                            <li class="nav-item">Nasze usługi</li>
+                        </a>
+                        <a href="#allegroSec">
+                            <li class="nav-item">Nasze Allegro</li>
+                        </a>
+                        <a href="#price">
+                            <li class="nav-item">Cennik</li>
+                        </a>
+
+                        <a href="#footerSec">
+                            <li class="nav-item">Kontakt</li>
+                        </a>
+
                     </ul>
                 </div>
 
             </nav>
         </header>
-        <section class="sec-content">
-            <img class="img-f" src="./img/motherboard.jpg" alt="motherboard">
+        <section class="sec-content  flex-center flex-column desktop-pic">
+
+            <h2 class="f-s-content logo f-c-w f-w-bold">* SERWISMAN * </h2>
+            <ul class="f-c-w f-s-small-content f-w-bold f-shadow flex">
+                <li>TANI</li>
+                <li>PROFESJONALNY</li>
+                <li>SZYBKI</li>
+
+            </ul>
+
         </section>
         <section class="sec-about flex-j-center " id="services">
             <div class="box-layout flex-column ">
@@ -62,7 +88,7 @@
                         są układy scalone, posiadamy dostęp do najbardziej nietypowych układów BGA na rynku, aczkolwiek nie sprzedajemy ich tylko montujemy w naszym serwisie które obejmujemy gwarancją.
                     </p>
                 </div>
-                <div class="info-box flex-center">
+                <div class="info-box flex-center" id="services2">
                     <h2 class="f-w-bold f-c-orange f-s-big">Z czym wiążą się nasze usługi?</h2>
 
                 </div>
@@ -92,7 +118,7 @@
                     </div>
                     <div class="tile-con flex-column flex-a-center">
                         <div class="half-box flex-column flex-j-around flex-a-center">
-                            <img class="i-big" src="./img/icons/smartphone2.svg" alt="smartphone">
+                            <img class="i-big" src="./img/icons/hard-disk.svg" alt="hard disk">
                             <h3 class="f-c-light-dark ">Odzyskiwanie danych</h3>
                         </div>
                         <div class="half-box">
@@ -142,12 +168,17 @@
 
             </services>
         </section>
-        <section class="allegro-sec">
+        <section class="break-sec flex-center">
+            <div class="news-box">
+                <h2 class="f-c-d">SKORZYSTAJ Z NASZYCH NAJNOWSZYCH USŁUG</h2>
+            </div>
+        </section>
+        <section class="allegro-sec" id="allegroSec">
             <div class="info-box flex-center">
                 <h2 class="f-s-big f-c-orange f-w-bold">Nasze Allegro</h2>
             </div>
             <div class="text-box flex-column flex-center">
-                <p style="margin-bottom:15px">Na naszych aukcjach możesz spotkać sporo podzespołów między innymi do:</p>
+                <p style="margin-bottom:15px" class="f-c-light-dark f-w-bold">Na naszych aukcjach możesz spotkać sporo podzespołów między innymi do:</p>
                 <div class="box-layout flex-center f-c-light flex-wrap rwd-allegro-icons">
                     <div class="tile-small flex-center flex-column">
                         <img class="i-big" src="./img/icons/computer.svg" alt="computer">
@@ -175,15 +206,20 @@
                 <h2 class="f-c-orange f-s-normal f-w-bold">Na chwilę obecną posiadamy:</h2>
 
             </div>
-            <div class="text-box flex-center">
-                <div class="tile-small flex-column flex-a-center">
-                    <img class="i-big" src="./img/icons/auction.svg" alt="auction">
-                    <h3 class="f-c-light"><span class="cout f-c-orange">400</span> Aukcji</h3>
-                </div>
-                <div class="tile-small flex-column flex-a-center">
-                    <img class="i-big" src="./img/icons/like.svg" alt="auction">
-                    <h3 class="f-c-light"><span class="cout f-c-orange">75</span> Polecających</h3>
-                </div>
+            <div class="text-box flex-center" id="countAction">
+
+                <a href="https://allegro.pl/uzytkownik/serwisman_com?order=m">
+                    <div class="tile-small flex-column flex-a-center">
+                        <img class="i-big" src="./img/icons/auction.svg" alt="auction">
+                        <h3 class="f-c-light"><span class="count f-c-orange">0</span> Aukcji</h3>
+                    </div>
+                </a>
+                <a href="https://allegro.pl/uzytkownik/39887172/oceny">
+                    <div class="tile-small flex-column flex-a-center">
+                        <img class="i-big" src="./img/icons/like.svg" alt="auction">
+                        <h3 class="f-c-light"><span class="count f-c-orange">0</span> Polecających</h3>
+                    </div>
+                </a>
             </div>
             <div class="info-box flex-center">
                 <h3 class="f-c-orange f-s-normal f-w-bold">Przejdź do naszego allegro i zobacz sam</h3>
@@ -203,6 +239,11 @@
         <!--
   Partner sec
         -->
+        <section class="break-sec flex-center desktop-pic">
+            <div class="news-box ">
+                <h2 class="f-c-d">ODWIEDZAJ CODZIENNIE NASZE AUKCJE, ABY WYŁAPAĆ DOSKONAŁE OFERTY</h2>
+            </div>
+        </section>
         <section class="price-sec flex-center" id="price">
             <div class="box-layout">
                 <div class="info-box flex-center">
@@ -282,7 +323,7 @@
                 </div>
 
         </section>
-        <footer class="footer-sec">
+        <footer class="footer-sec" id="footerSec">
             <div class="map">
                 <div id="map"></div>
             </div>
@@ -468,7 +509,7 @@
                                     <div class="model-menu-item-content">Telewizory</div>
                                 </li>
                                 <li class="modal-menu-item flex-center" @click="vueServices.clickModalMenu(2),vueServices.content.header = 'Usługi dotyczące stron internetowych', vueServices.content.imgSrc ='./img/picture/code.jpeg',vueServices.pushPhone()">
-                                    <img src="./img/icons/smartphone3.svg" alt="phone">
+                                    <img src="./img/icons/website.svg" alt="website">
                                     <div class="model-menu-item-content">Strony internetowe</div>
                                 </li>
                                 <li class="modal-menu-item flex-center" @click="vueServices.clickModalMenu(3),vueServices.content.header = 'Usługi dotyczące systemów operacyjnych', vueServices.content.imgSrc ='./img/picture/system.jpeg',vueServices.pushSystem()">

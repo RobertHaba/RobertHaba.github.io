@@ -128,3 +128,81 @@ function menu() {
     var menuEl = document.getElementById('mainNav');
     menuEl.style.display = (menuEl.style.display == 'flex') ? 'none' : 'flex';
 }
+
+function shadowAnim() {
+    var section = document.getElementsByClassName('sec-about')[0];
+    var boxs = section.getElementsByClassName('tile-con')
+    console.log(boxs)
+    for (let i = 0; i < boxs.length; i++) {
+        (function(index) {
+                setTimeout(function() {
+                    boxs[i].className += ' shadowAnim';
+
+                }, i * 500)
+            }
+
+        )(i)
+    }
+}
+window.onload = scrollFunction();
+
+function getDocHeight() {
+    var D = document;
+    return Math.max(
+        D.body.scrollHeight, D.documentElement.scrollHeight,
+        D.body.offsetHeight, D.documentElement.offsetHeight,
+        D.body.clientHeight, D.documentElement.clientHeight
+    );
+}
+
+function scrollFunction() {
+    var topSecAbout = document.getElementById('services').offsetTop
+    var topSecAllegro = document.getElementsByClassName('allegro-sec')[0].offsetTop
+    window.addEventListener("scroll", function showEl() {
+        let scrollPosition = window.scrollY
+        if (scrollPosition >= topSecAbout) {
+            shadowAnim()
+            topSecAbout = getDocHeight()
+        }
+        if (scrollPosition >= (topSecAllegro - 100)) {
+            countAnim()
+            topSecAllegro = getDocHeight()
+        }
+    })
+}
+console.log(getDocHeight())
+
+function countAnim() {
+    var boxNumber1 = document.getElementsByClassName('count')[0];
+    const number1 = 400
+    let zero = 0
+    var boxNumber2 = document.getElementsByClassName('count')[1];
+    const number2 = 75
+
+    var time1 = 2000 / number1;
+    var time2 = 2000 / number2;
+    const allegroSec = document.getElementById('countAction')
+    var icons = allegroSec.getElementsByClassName('i-big');
+    var helpWidth1 = 0;
+    var countInterval = setInterval(function() {
+        helpWidth1 += 70 / number1;
+        icons[0].style.width = helpWidth1 + 'px';
+        zero++;
+        if (zero == number1) {
+            clearInterval(countInterval);
+        }
+        boxNumber1.innerHTML = zero
+    }, time1)
+    var helpWidth2 = 0;
+    let zero2 = 0;
+    var countInterval2 = setInterval(function() {
+        helpWidth2 += 70 / number2;
+        icons[1].style.width = helpWidth2 + 'px';
+        zero2++;
+        if (zero2 == number2) {
+            clearInterval(countInterval2);
+        }
+        boxNumber2.innerHTML = zero2
+    }, time2)
+    countAnimFun = undefined;
+}
