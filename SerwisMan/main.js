@@ -115,6 +115,12 @@ vueServices.pushLaptop()
 function showScroll() {
     document.getElementsByTagName('body')[0].style.overflow = 'auto';
 }
+window.onresize = function() {
+    console.log(this.innerWidth)
+    if (this.innerWidth > 625) {
+        document.getElementById('mainNav').style.display = 'flex'
+    }
+}
 
 function menu() {
     console.log('dasda')

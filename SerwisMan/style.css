@@ -907,6 +907,7 @@ body::-webkit-scrollbar-thumb,
         align-items: center;
         justify-content: center;
         height: auto;
+        border-bottom: 0;
     }
     .price-services tbody td:first-child,
     .price-services tbody td:last-child {
@@ -914,16 +915,21 @@ body::-webkit-scrollbar-thumb,
         border-right: 1px solid #DDD;
     }
     .price-services tbody td:first-child {
-        background-color: #F9F9F9;
+        background-color: rgba(255, 255, 255, 0.952);
     }
     .price-services thead td:last-child {
         background-color: #555;
     }
     .price-services tbody td:last-child {
         display: flex;
-        background-color: #FFF;
+        background-color: rgba(255, 255, 255, 0.952);
         align-items: center;
         justify-content: center;
+        border-bottom: 1px solid #DDD;
+        ;
+    }
+    .price-services tbody tr:nth-child(2n + 1) {
+        background-color: #000;
     }
 }
 
@@ -931,7 +937,7 @@ body::-webkit-scrollbar-thumb,
     display: none;
 }
 
-@media screen and (max-width:575px) {
+@media screen and (max-width:625px) {
     .logo {
         font-size: 25px;
     }
