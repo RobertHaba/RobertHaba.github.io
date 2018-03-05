@@ -112,3 +112,9 @@ function mobileMenu() {
 
 
 }
+window.onresize = function() {
+    console.log(this.innerWidth)
+    if (this.innerWidth > 500) {
+        document.getElementById('main-nav').style.display = 'flex'
+    }
+}
