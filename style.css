@@ -103,6 +103,8 @@ li {
     height: 100vh;
     position: relative;
     box-sizing: border-box;
+    background-image: url('./img/background/space.png');
+    background-size: 100%;
 }
 
 main {
@@ -143,6 +145,49 @@ main {
     font-family: 'Lato'
 }
 
+.go-top-btn {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    z-index: 500;
+    border-radius: 100%;
+    background-image: url('./img/icons/rocket-btn.svg');
+    background-size: 80% 80%;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    top: 90vh;
+    right: 20px;
+    background-color: #2d253a;
+    box-shadow: 0 0 1px 2px #FFF;
+    transform: rotate(180deg);
+    opacity: 0;
+    transition: 1s opacity ease;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.go-top-btn a {
+    width: 50px;
+    height: 50px;
+}
+
+.go-top-btn:hover {
+    transform: rotate(0deg) !important;
+    animation: 1s goTopBtnAnim ease;
+}
+
+@keyframes goTopBtnAnim {
+    0% {
+        margin-top: 0px;
+    }
+    50% {
+        margin-top: 5px;
+    }
+    100% {
+        margin-top: 0;
+    }
+}
+
 
 /*
 #N1
@@ -159,6 +204,7 @@ Nav section
     z-index: 10;
     border-top: 2px solid #DF4054;
     box-shadow: 0px 0px 3px 6px rgb(31, 26, 39);
+    z-index: 1000;
 }
 
 .logo {
@@ -167,18 +213,23 @@ Nav section
     color: rgb(123, 115, 128);
     font-size: 30px;
     font-weight: bold;
+    cursor: pointer;
 }
-.logo a:link, .logo a:visited{
+
+.logo a:link,
+.logo a:visited {
     text-align: center;
     color: rgb(123, 115, 128);
     font-size: 30px;
     font-weight: bold;
     text-decoration: none;
 }
-.logo a:hover{
-    color:#DF4054;
+
+.logo a:hover {
+    color: #DF4054;
     transition: 0.3s ease all;
 }
+
 #main-nav {
     display: flex;
     align-items: center;
@@ -203,10 +254,12 @@ Nav section
     transition: all ease 0.3s;
     cursor: pointer;
 }
-#main-nav a{
+
+#main-nav a {
     color: inherit;
     text-decoration: none;
 }
+
 
 /* 
 #S1
@@ -220,6 +273,7 @@ Welcome section
     background-repeat: no-repeat;
     display: flex;
     justify-content: center;
+    z-index: 501;
 }
 
 @keyframes logoAnim {
@@ -302,6 +356,8 @@ Project
     border-bottom: 5px solid #FFF;
     margin-top: 30px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 
 .photo-project {
@@ -323,14 +379,14 @@ Project
     padding: 30px 10px 0px 10px;
     font-size: 15px;
     color: #AAA;
+    flex-grow: 1;
 }
 
 .btn-inline {
     display: flex;
     justify-content: space-around;
     position: relative;
-    position: sticky;
-    top: 100%;
+    margin: auto 0;
 }
 
 .btn-proj {
@@ -492,6 +548,11 @@ Project
     width: 140px;
 }
 
+.software-box:hover {
+    background-color: #3a3347;
+    transition: 0.3s ease all;
+}
+
 .short-name {
     margin: 20px;
     width: 100px;
@@ -535,6 +596,12 @@ Project
     align-items: center;
 }
 
+.tech-con h3 {
+    margin-bottom: 10px;
+    color: #EEE;
+    font-family: 'Roboto';
+}
+
 .small-box-column {
     display: flex;
 }
@@ -550,10 +617,21 @@ Project
     margin: 0 5px;
 }
 
+.small-tech-box:hover img {
+    transform: scale(1.1);
+    transition: 0.9s ease all;
+    overflow: hidden;
+}
+
+.small-tech-box:hover {
+    background-color: #2d253a;
+    transition: 0.3s ease all;
+}
+
 .small-tech-box h4 {
     color: #FFF;
     font-size: 13px;
-    margin-bottom: 10px;
+    margin-top: 3px;
 }
 
 .logo-background {
@@ -583,7 +661,8 @@ Project
 */
 
 .wallpaper-moon {
-    background-image: url('img/background/moon.jpg')
+    background-image: url('img/background/moon.jpg');
+    height: 280px;
 }
 
 #contact-section {
@@ -593,7 +672,7 @@ Project
 
 .half-circle {
     margin-top: 200px;
-    height: 20vh;
+    height: 15vh;
     width: 100%;
     border-top-left-radius: 100%;
     border-top-right-radius: 100%;
@@ -794,9 +873,11 @@ a:visited {
         flex-direction: column;
     }
 }
+
 .hamburger-menu {
     display: none;
 }
+
 @media screen and (max-width: 500px) {
     .hamburger-menu {
         display: flex;
@@ -805,6 +886,7 @@ a:visited {
         color: #66636b;
         font-family: 'Montserrat';
         font-size: 25px;
+        cursor: pointer;
     }
     #main-nav {
         flex-direction: column;

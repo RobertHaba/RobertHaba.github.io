@@ -118,3 +118,48 @@ window.onresize = function() {
         document.getElementById('main-nav').style.display = 'flex'
     }
 }
+window.onload = scrollFunction();
+
+function scrollFunction() {
+    var topSecProject = document.getElementById('project-section').offsetTop;
+    var goTopBtn = document.getElementById('go-top');
+    let previous = window.scrollY;
+    let direction
+    window.addEventListener("scroll", function showEl() {
+
+        let scrollPosition = window.scrollY;
+        direction = scrollPosition > previous ? 'down' : 'up';
+        previous = window.scrollY;
+        console.log(direction)
+        if (scrollPosition >= topSecProject) {
+
+            goTopBtn.style.opacity = "1";
+            goTopBtn.style.visibility = "visible";
+            if (direction == 'up') {
+                goTopBtn.style.transform = "rotate(0deg)"
+                goTopBtn.style.transition = "0.5s ease all"
+            } else {
+                goTopBtn.style.transform = "rotate(180deg)"
+            }
+        } else {
+            goTopBtn.style.opacity = "0"
+            goTopBtn.style.visibility = "hidden";
+
+
+        }
+    })
+
+
+}
+
+
+smoothScroll = (element) => {
+    let scrollTo = document.getElementById(element)
+    window.scroll({
+        behavior: 'smooth',
+        left: 0,
+        top: scrollTo.offsetTop
+    });
+    console.log('asd')
+    console.log(scrollTo.offsetTop)
+}
