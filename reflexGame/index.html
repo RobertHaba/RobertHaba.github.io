@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link type="text/css" href="./habaLib.css" rel="stylesheet">
+    <link type="text/css" href="./style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat|Open+Sans|Roboto" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <main class="container-game">
+
+        <section class="game-window" id="game-window">
+            <div class="block block-square" onclick="clickBlock(this)">
+
+            </div>
+
+        </section>
+        <section class="sec-interactions">
+            <h2 class="logo"><span>Haba</span> <span> Reflex Test - Game</span></h2>
+            <ul class="nav-list">
+                <li onclick="runSmallPopUp('restartPopUp')">
+                    <div class="icon i-restart"></div>Restart</li>
+                <li onclick="showStats()">
+                    <div class="icon i-stats"></div>Statystyki</li>
+                <li onclick="start(false, 'yes')">
+                    <div class="icon i-settings"></div>Ustawienia Gry</li>
+                <li onclick="reactionTimeStats()">
+                    <div class="icon i-ranking"></div>Ranking</li>
+            </ul>
+
+        </section>
+
+        <section class="pop-up-loggin">
+
+            <div class="pop-up-form">
+                <h3>Nazwa</h3><input type="text" name="name">
+                <h3>Czas rozgrywki</h3>
+                <form class="radio-inline">
+                    <label>
+                            <input type="radio" name="timeGame" value="10" checked> 10 sekund
+                    </label>
+                    <label>
+                            <input type="radio" name="timeGame" value="30"> 30 sekund
+                    </label>
+                    <label>
+                        <input type="radio" name="timeGame" value="1"> 1 sekund
+                    </label>
+                </form>
+                <h3>Przeszkody</h3>
+                <form class="radio-inline">
+                    <label>
+                            <input type="radio" name="obstacle" value="0" checked> Brak
+                    </label>
+                    <label>
+                            <input type="radio" name="obstacle" value="1"> Dodaj
+                    </label>
+                </form>
+                <button onclick="start(true)">
+                    Start
+                </button>
+            </div>
+        </section>
+        <section class="pop-up-restart flex-center" id="restartPopUp">
+            <div class="pop-up-restart__div flex-column flex-j-bet">
+                <div class="container flex-center">
+                    <h2 class="container__h container__h--info">
+                        Czy na pewno chcesz zrestartować?
+                    </h2>
+                </div>
+                <div class="container-small flex-j-around flex-a-center">
+                    <button class="container-small__button container-small__button--submit" onclick="resetParm(), closePopUp('restartPopUp')">Potwierdź</button>
+                    <button class="container-small__button container-small__button--cancel" onclick="closePopUp('restartPopUp'), continueGame()">Kontynuuj</button>
+                </div>
+            </div>
+        </section>
+        <section class="pop-up-restart flex-center" id="startPopUp">
+            <div class="pop-up-restart__div flex-column flex-j-bet">
+                <div class="container flex-center">
+                    <h2 class="container__h container__h--info">
+                        Zacznij od nowa
+                    </h2>
+                </div>
+                <div class="container-small flex-j-around flex-a-center">
+                    <button class="container-small__button container-small__button--submit" style="width:100%" onclick="resetParm(), closePopUp('startPopUp')">Start!</button>
+
+                </div>
+            </div>
+        </section>
+        <section class="pop-up-stats flex-center" id="statsPopUp">
+            <div class="pop-up-stats__div">
+                <header class="header flex-center">
+                    <h2 class="header__h2">
+                        Statystyki dla rozgrywki <span id="gameTime"></span> sekundowej
+                    </h2>
+                    <div class="header__div--close" onclick="closePopUp('statsPopUp'), runSmallPopUp('startPopUp')">
+                        X
+                    </div>
+                </header>
+                <article class="stats-con flex">
+                    <div class="stats-con__div--left">
+                        <div class="user-image flex-center">
+                            <div class="user-image__img user-image__img--user"></div>
+                        </div>
+                        <div class="stats-left__div">
+                            <ul class="flex-j-center">
+                                <li class="stats-left__li--name" id="player-name">Gracz</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="stats-con__div--right flex">
+                        <div class="stats-right__div--last flex-center flex-column">
+                            <h2 class="stats-right__h2">Ostatni</h2>
+                            <table class="show-stats">
+                                <tr class="show-stats__tr">
+                                    <td>Najszybsze kliknięcie</td>
+                                    <td id="last-fast-click">0.000</td>
+                                </tr>
+                                <tr class="show-stats__tr">
+                                    <td>Najgorsze kliknięcie</td>
+                                    <td id="last-worst-click">0.000</td>
+                                </tr>
+                                <tr class="show-stats__tr">
+                                    <td>Średni czas na kliknięcie</td>
+                                    <td id="last-avarge-click">0</td>
+                                </tr>
+                                <tr class="show-stats__tr">
+                                    <td>Nietrafione kliknięcia</td>
+                                    <td id="last-miss-click">0</td>
+                                </tr>
+                                <tr class="show-stats__tr">
+                                    <td>Ilość kliknięć</td>
+                                    <td id="last-miss-click">0</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="stats-right__div--best flex-center flex-column">
+                            <h2 class="stats-right__h2">Najlepszy</h2>
+                            <table class="show-stats">
+                                <tr class="show-stats__tr">
+                                    <td>Najszybsze kliknięcie</td>
+                                    <td id="last-fast-click">5</td>
+                                </tr>
+                                <tr class="show-stats__tr">
+                                    <td>Najgorsze kliknięcie</td>
+                                    <td id="last-worst-click"></td>
+                                </tr>
+                                <tr class="show-stats__tr">
+                                    <td>Średni czas na kliknięcie</td>
+                                    <td id="last-avarge-click"></td>
+                                </tr>
+                                <tr class="show-stats__tr">
+                                    <td>Nietrafione kliknięcia</td>
+                                    <td id="last-miss-click"></td>
+                                </tr>
+                                <tr class="show-stats__tr">
+                                    <td>Ilość kliknięć</td>
+                                    <td id="last-miss-click"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+
+
+
+    <script src="main.js"></script>
+    <script>
+        document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+    </script>
+</body>
+
+</html>
