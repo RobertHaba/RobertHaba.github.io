@@ -24,7 +24,7 @@ Vue.component('services', {
     template: '#modal-services'
 })
 var vueServices = new Vue({
-        el: '#services',
+        el: '#services2',
         data: {
             showWindow: false,
             content: {
@@ -130,7 +130,7 @@ function menu() {
 }
 
 function shadowAnim() {
-    var section = document.getElementsByClassName('sec-about')[0];
+    var section = document.getElementById('services2');
     var boxs = section.getElementsByClassName('tile-con')
     console.log(boxs)
     for (let i = 0; i < boxs.length; i++) {
@@ -205,4 +205,16 @@ function countAnim() {
         boxNumber2.innerHTML = zero2
     }, time2)
     countAnimFun = undefined;
+}
+
+
+smoothScroll = (element) => {
+    let scrollTo = document.getElementById(element)
+    window.scroll({
+        behavior: 'smooth',
+        left: 0,
+        top: scrollTo.offsetTop - 100
+    });
+    console.log('asd')
+    console.log(scrollTo.offsetTop)
 }
