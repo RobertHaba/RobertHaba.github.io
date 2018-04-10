@@ -8,6 +8,7 @@
     <link type="text/css" href="./habaLib.css" rel="stylesheet">
     <link type="text/css" href="./style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat|Open+Sans|Roboto" rel="stylesheet">
+
     <title>Document</title>
 </head>
 
@@ -23,14 +24,16 @@
         <section class="sec-interactions">
             <h2 class="logo"><span>Haba</span> <span> Reflex Test - Game</span></h2>
             <ul class="nav-list">
-                <li onclick="runSmallPopUp('restartPopUp')">
+                <li class="nav-list__li--time-counter">
+                    0:00
+                </li>
+                <li onclick="runSmallPopUp('restartPopUp')" id="restartMenu">
                     <div class="icon i-restart"></div>Restart</li>
-                <li onclick="showStats()">
+                <li onclick="showStats()" id="statsMenu">
                     <div class="icon i-stats"></div>Statystyki</li>
-                <li onclick="start(false, 'yes')">
+                <li onclick="start(false, 'yes')" id="settingsMenu">
                     <div class="icon i-settings"></div>Ustawienia Gry</li>
-                <li onclick="reactionTimeStats()">
-                    <div class="icon i-ranking"></div>Ranking</li>
+
             </ul>
 
         </section>
@@ -38,7 +41,6 @@
         <section class="pop-up-loggin">
 
             <div class="pop-up-form">
-                <h3>Nazwa</h3><input type="text" name="name">
                 <h3>Czas rozgrywki</h3>
                 <form class="radio-inline">
                     <label>
@@ -51,14 +53,17 @@
                         <input type="radio" name="timeGame" value="1"> 1 sekund
                     </label>
                 </form>
-                <h3>Przeszkody</h3>
+                <h3>Gracze</h3>
                 <form class="radio-inline">
                     <label>
-                            <input type="radio" name="obstacle" value="0" checked> Brak
+                            <input type="radio" name="players" value="1" checked> 1
                     </label>
                     <label>
-                            <input type="radio" name="obstacle" value="1"> Dodaj
+                            <input type="radio" name="players" value="2"> 2
                     </label>
+                    <label>
+                        <input type="radio" name="players" value="3"> 3
+                </label>
                 </form>
                 <button onclick="start(true)">
                     Start
@@ -102,16 +107,7 @@
                     </div>
                 </header>
                 <article class="stats-con flex">
-                    <div class="stats-con__div--left">
-                        <div class="user-image flex-center">
-                            <div class="user-image__img user-image__img--user"></div>
-                        </div>
-                        <div class="stats-left__div">
-                            <ul class="flex-j-center">
-                                <li class="stats-left__li--name" id="player-name">Gracz</li>
-                            </ul>
-                        </div>
-                    </div>
+
                     <div class="stats-con__div--right flex">
                         <div class="stats-right__div--last flex-center flex-column">
                             <h2 class="stats-right__h2">Ostatni</h2>
@@ -136,6 +132,10 @@
                                     <td>Ilość kliknięć</td>
                                     <td id="last-miss-click">0</td>
                                 </tr>
+                                <tr class="show-stats__tr">
+                                    <td>Punkty</td>
+                                    <td id="last-miss-click">0</td>
+                                </tr>
                             </table>
                         </div>
                         <div class="stats-right__div--best flex-center flex-column">
@@ -143,23 +143,27 @@
                             <table class="show-stats">
                                 <tr class="show-stats__tr">
                                     <td>Najszybsze kliknięcie</td>
-                                    <td id="last-fast-click">5</td>
+                                    <td id="last-fast-click">0.000</td>
                                 </tr>
                                 <tr class="show-stats__tr">
                                     <td>Najgorsze kliknięcie</td>
-                                    <td id="last-worst-click"></td>
+                                    <td id="last-worst-click">0.000</td>
                                 </tr>
                                 <tr class="show-stats__tr">
                                     <td>Średni czas na kliknięcie</td>
-                                    <td id="last-avarge-click"></td>
+                                    <td id="last-avarge-click">0</td>
                                 </tr>
                                 <tr class="show-stats__tr">
                                     <td>Nietrafione kliknięcia</td>
-                                    <td id="last-miss-click"></td>
+                                    <td id="last-miss-click">0</td>
                                 </tr>
                                 <tr class="show-stats__tr">
                                     <td>Ilość kliknięć</td>
-                                    <td id="last-miss-click"></td>
+                                    <td id="last-miss-click">0</td>
+                                </tr>
+                                <tr class="show-stats__tr">
+                                    <td>Punkty</td>
+                                    <td id="last-miss-click">0</td>
                                 </tr>
                             </table>
                         </div>
@@ -167,13 +171,161 @@
                 </article>
             </div>
         </section>
+        <section class="pop-up-ranking flex-center" id="ranking">
+            <div class="pop-up-ranking__div flex-column">
+                <header class="ranking-menu flex-center flex-column">
+                    <img class="ranking-menu__img--crown" src="./icons/crown.svg" alt="crown">
+                    <h2>TABLICA WYNIKÓW </h2>
+
+                </header>
+
+                <div class="ranking-scroll">
+                    <div class="ranking-user-box flex">
+                        <div class="ranking-user-box__left--column flex-a-center flex-j-around">
+                            <p>#1</p>
+                            <div class="ranking-img avatar-man1"></div>
+                        </div>
+                        <div class="ranking-user-box__right--column flex-column">
+                            <div class="right-column__top flex-center">
+                                <div class="right-column-top__name">
+                                    <h3>Tomek</h3>
+                                </div>
+                                <div class="right-column-top__score">
+                                    <p>Punkty: <span class="score">{{user.score}}</span></p>
+                                </div>
+
+                            </div>
+                            <div class="right-column__bottom flex-center">
+                                <div class="right-column-bottom__best">
+                                    <p>Najlepszy: <span>{{user.best}}</span></p>
+                                </div>
+                                <div class="right-column-bottom__average">
+                                    <p>Średnio: <span>{{user.value}}</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ranking-user__challenge flex-center">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat, nisi ac lacinia eleifend, felis risus malesuada metus.
+                        </p>
+                    </div>
+                    <div class="ranking-user-box flex">
+                        <div class="ranking-user-box__left--column flex-a-center flex-j-around">
+                            <p>#2</p>
+                            <div class="ranking-img avatar-man1"></div>
+                        </div>
+                        <div class="ranking-user-box__right--column flex-column">
+                            <div class="right-column__top flex-center">
+                                <div class="right-column-top__name">
+                                    <h3>Tomek</h3>
+                                </div>
+                                <div class="right-column-top__score">
+                                    <p>Punkty: <span class="score">{{user.score}}</span></p>
+                                </div>
+
+                            </div>
+                            <div class="right-column__bottom flex-center">
+                                <div class="right-column-bottom__best">
+                                    <p>Najlepszy: <span>{{user.best}}</span></p>
+                                </div>
+                                <div class="right-column-bottom__average">
+                                    <p>Średnio: <span>{{user.value}}</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ranking-user-box flex">
+                        <div class="ranking-user-box__left--column flex-a-center flex-j-around">
+                            <p>#3</p>
+                            <div class="ranking-img avatar-man1"></div>
+                        </div>
+                        <div class="ranking-user-box__right--column flex-column">
+                            <div class="right-column__top flex-center">
+                                <div class="right-column-top__name">
+                                    <h3>Tomek</h3>
+                                </div>
+                                <div class="right-column-top__score">
+                                    <p>Punkty: <span class="score">{{user.score}}</span></p>
+                                </div>
+
+                            </div>
+                            <div class="right-column__bottom flex-center">
+                                <div class="right-column-bottom__best">
+                                    <p>Najlepszy: <span>{{user.best}}</span></p>
+                                </div>
+                                <div class="right-column-bottom__average">
+                                    <p>Średnio: <span>{{user.value}}</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="ranking-options flex-center" onclick="closePopUp('ranking'),start(false)">
+                    <p>Zamknij</p>
+                </footer>
+            </div>
+
+
+        </section>
+        <section class="pop-up-players-menu flex-center" id="menuPlayers">
+            <div class="pop-up-players-menu__div">
+                <header class="modal-players-header flex-center">
+                    <h2>Gracz nr <span id="player-number">1</span></h2>
+                </header>
+                <div class="pop-players-wrap flex-column flex-j-bet">
+                    <div class="players-box flex-j-around flex-a-center">
+
+
+                        <img class="img-avatars unchecked" src="./icons/man1.svg" alt="avatar-man1">
+                        <img class="img-avatars unchecked" src="./icons/man2.svg" alt="avatar-man2">
+                        <img class="img-avatars unchecked" src="./icons/girl1.svg" alt="avatar-girl1">
+                        <img class="img-avatars unchecked" src="./icons/girl2.svg" alt="avatar-girl2">
+
+                    </div>
+                    <div class="players-input flex-j-around flex-a-center">
+
+                        <div class="flex-center flex-column"><label>Nazwa </label><input type="text" minlength="1" maxlength="10" name="playerName"></div>
+                        <div class="flex-center flex-column"><label>Wyzwanie </label><input type="text" placeholder="np. przeciwnicy piją" maxlength="150" name="challenge"></div>
+                    </div>
+                    <div class="players-options flex-center" onclick="next()">
+                        <button class="players-options__btn">Następny</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section class="pop-up-round flex-center" id="pop-up-round">
+            <div class="pop-up-round__box flex-column">
+                <div class="flex">
+                    <div class="round-player__img">
+                        <div class="round-player__avatar avatar-man2" id="player-avatar"></div>
+                    </div>
+                    <div class="round-info__box flex-column ">
+                        <div class="round-info__name flex-center">
+                            <p id="player-name">Radek</p>
+                        </div>
+                        <div class="round-info__challenge flex-center">
+                            <p id="player-challenge">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tellus mi, facilisis at risus eget, auctor efficitur nullam.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="round-player__start flex-center" id="startRivalry">
+                    Start
+                </div>
+            </div>
+        </section>
 
     </main>
 
 
-
-
     <script src="main.js"></script>
+
+
+
+
     <script>
         document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
     </script>
