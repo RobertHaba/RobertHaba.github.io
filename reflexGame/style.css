@@ -626,7 +626,7 @@ body {
 }
 
 .round-player__avatar {
-    background-image: url('./icons/man1.svg');
+    background-image: url('./icons/players.svg');
     background-size: 100% 100%;
     width: 100%;
     height: 100%;
@@ -696,4 +696,48 @@ body {
     position: relative;
     background-color: #FFF;
     box-shadow: 0 0 2px 2px #EEE;
+}
+
+.pop-up-instruction {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 777777;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.pop-up-instruction__box {
+    width: 475px;
+    height: auto;
+    background-color: #FFF;
+    box-shadow: 0 0 2px 2px #EEE;
+    font-family: 'Montserrat';
+}
+
+.instruction__header {
+    width: 100%;
+    height: 50px;
+    color: #009CFF;
+    letter-spacing: 1.7px;
+}
+
+.instruction__div {
+    font-size: 14px;
+    padding: 7px;
+}
+
+.instruction__div li {
+    margin: 3px 0;
+}
+
+.instruction__div li:nth-child(2n) {
+    color: #999;
+}
+
+.instruction__footer {
+    height: 40px;
+    background-color: #009CFF;
+    color: #FFF;
 }

@@ -50,7 +50,7 @@
                             <input type="radio" name="timeGame" value="30"> 30 sekund
                     </label>
                     <label>
-                        <input type="radio" name="timeGame" value="1"> 1 sekund
+                        <input type="radio" name="timeGame" value="60"> 60 sekund
                     </label>
                 </form>
                 <h3>Gracze</h3>
@@ -285,10 +285,10 @@
                     </div>
                     <div class="players-input flex-j-around flex-a-center">
 
-                        <div class="flex-center flex-column"><label>Nazwa </label><input type="text" minlength="1" maxlength="10" name="playerName"></div>
+                        <div class="flex-center flex-column"><label>Nazwa </label><input type="text" minlength="1" maxlength="10" name="playerName" placeholder="Gracz 1"></div>
                         <div class="flex-center flex-column"><label>Wyzwanie </label><input type="text" placeholder="np. przeciwnicy piją" maxlength="150" name="challenge"></div>
                     </div>
-                    <div class="players-options flex-center" onclick="next()">
+                    <div class="players-options flex-center" onclick="createNextPlayer()">
                         <button class="players-options__btn">Następny</button>
                     </div>
 
@@ -299,7 +299,7 @@
             <div class="pop-up-round__box flex-column">
                 <div class="flex">
                     <div class="round-player__img">
-                        <div class="round-player__avatar avatar-man2" id="player-avatar"></div>
+                        <div class="round-player__avatar" id="player-avatar"></div>
                     </div>
                     <div class="round-info__box flex-column ">
                         <div class="round-info__name flex-center">
@@ -317,12 +317,31 @@
                 </div>
             </div>
         </section>
-
+        <section class="pop-up-instruction flex-center" id="popInstruction">
+            <div class="pop-up-instruction__box">
+                <header class="instruction__header flex-center">
+                    <h3>INSTRUKCJA</h3>
+                </header>
+                <div class="instruction__div">
+                    <ul>
+                        <li>Wybierz czas rozgrywki od 10-60sekund</li>
+                        <li>Następnie wybierz tryb gry: 1 - jeden gracz, 2 - dwóch graczy 3 - trzech graczy</li>
+                        <li>A następnie kliknij start</li>
+                        <li>Staraj się jak najszybciej klikać w czarne kółko</li>
+                        <li>Gdy minie Twój wybrany czas, to na Twoim ekranie wyświetli się okienko ze statystykami obecnej i najlepszej gry(tryb pojedyńczy)</li>
+                        <li>w TRYBIE dwu lub trzyosobowym każda osoba ma tylko jedną turę</li>
+                        <li>Gdy ostatnia osoba ukończy grę, to wyświetli się tabela wyników z podanymi statystykami i pozycjami</li>
+                    </ul>
+                </div>
+                <footer class="instruction__footer flex-center" onclick="closePopUp('popInstruction')">
+                    <h3>Kontynuuj</h3>
+                </footer>
+            </div>
+        </section>
     </main>
 
 
     <script src="main.js"></script>
-
 
 
 
