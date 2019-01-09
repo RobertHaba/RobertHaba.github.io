@@ -2,3 +2,6 @@
     -webkit-user-modify: read-write;
     overflow-wrap: break-word;
 }
+#showHeaderText{
+    width: 600px;
+}

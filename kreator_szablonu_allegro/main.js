@@ -2,14 +2,19 @@
     const addEvents = () => {
         let copyBtn = document.querySelector('#copyBtn')
         copyBtn.addEventListener('click', () => {
-            copy()
+            copy('advanced')
         })
         let inputProducts = document.querySelectorAll('[data-element="product-input"]');
         for (const element of inputProducts) {
             element.addEventListener('keyup',function(){
                 changeValue(element)
+                checkLengthOfText()
             },false)
         }
+        let copyTitleBtn = document.querySelector('#copyTitleBtn')
+        copyTitleBtn.addEventListener('click', () => {
+            copy('normal')
+        })
     }
     const selectText = () => {
         let copyBox = document.querySelector('#templateBox')
@@ -25,8 +30,14 @@
             range.select();
         }
     }
-    const copy = () => {
-        selectText()
+    const copy = (mode) => {
+        if(mode === 'advanced'){
+            selectText()
+        }
+        else if(mode=== "normal"){
+            let titleText = document.querySelector('#showHeaderText');
+            titleText.select()
+        }
         document.execCommand('copy')
     }
     let productParamArray = [
@@ -44,6 +55,17 @@
             'type': 'Code',
             'tag': 'ul',
             'position': '1'
+        },
+        {
+            'type': 'Description',
+            'tag': 'ul',
+            'position': '4'
+        }
+        ,
+        {
+            'type': 'Gratis',
+            'tag': 'ul',
+            'position': '5'
         }
     ]
     const changeValue = (inputElement)=>{
@@ -86,12 +108,49 @@
 
     }
     const createNewListItem = (text, parentEl,tag)=>{
-        parentEl.innerHTML += `<${tag}>${text}</${tag}>`
+        parentEl.innerHTML += `<${tag} data-test="asd">${text}</${tag}>`
 
     }
-
-
-
+    const checkLengthOfText = () => {
+        let elementsNormal = document.querySelectorAll('[data-check-length="normal"]');
+        let elementAdvanced = document.querySelector('[data-check-length="advanced"]')
+        let boxToShowLength = document.querySelector('#textLength');
+        let totalNormal = 0
+        let total = 0
+        for (const element of elementsNormal) {
+            totalNormal += element.value.length
+            console.log(totalNormal);
+        }
+        total = totalNormal + elementAdvanced.value.length
+        boxToShowLength.innerText = totalNormal + ' + ' + elementAdvanced.value.length + " = " + total
+        let propertyArray = [elementsNormal, elementAdvanced, totalNormal, total]
+        createHeaderText(propertyArray)
+    }
+    const createHeaderText = (propertyArray) => {
+        let codeProduct, namesTotalLen, totalLen, text
+        model = propertyArray[0][0].value
+        nameProduct = propertyArray[0][1].value
+        codeProduct = propertyArray[1].value
+        namesTotalLen = propertyArray[2]
+        totalLen = propertyArray[3]
+        text = ''
+        console.log(totalLen);
+            console.log(namesTotalLen);
+        if(namesTotalLen < totalLen && totalLen <= 50){
+            text = model + ' ' + nameProduct + ' ' + codeProduct
+            console.log('1');
+        }
+        else{
+            text = model + ' ' + nameProduct
+            console.log('2');
+        }
+        addNewTextToInput(text)
+    }
+    const addNewTextToInput = (text) => {
+        let headerText = document.querySelector('#showHeaderText');
+        headerText.value = text
+    }
+    
     addEvents()
 
 })()
