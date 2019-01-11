@@ -8,7 +8,7 @@
                 createTitle()
             }, false)
         }
-       
+
         let moreInfoBtn = document.querySelector('#morePieces');
         moreInfoBtn.addEventListener('click', () => {
             morePieces(moreInfoBtn)
@@ -33,7 +33,7 @@
         copyTemplate.addEventListener('click', () => {
             copy(copyTemplate)
         })
-        
+
     }
     const matchTemplateElement = (input) => {
         let text
@@ -88,11 +88,11 @@
     }
     const findBreakLine = (string) => {
         let stringArray = string.split(',')
-        console.log(stringArray);
         return stringArray
     }
     const showTheActivedItem = (input, type) => {
         let items = document.querySelectorAll('[data-item-box]');
+        console.log(items);
         for (const element of items) {
             if (element.dataset.itemBox === type && input.value !== '') {
                 console.log(type + ' = ' + element.dataset.itemTitle);
@@ -115,51 +115,48 @@
             console.log(newElement);
             infoBox.insertBefore(newElement, infoBox.firstChild)
             btn.dataset.btnInfo = 'normal'
-            btn.innerText = "Mniej sztuk"
+            btn.innerText = "(`3) Mniej sztuk "
         } else {
             btn.dataset.btnInfo = 'more'
-            btn.innerText = "Więcej sztuk"
+            btn.innerText = "(`3) Więcej sztuk "
             infoBox.removeChild(infoBox.childNodes[0])
         }
     }
     const createTitle = () => {
         let inputsArray = getNecessaryInputsToTitle()
         let title = ''
-        let lengthDefault = inputsArray[0].value.length + inputsArray[1].value.length 
+        let lengthDefault = inputsArray[0].length + inputsArray[1].length
         let showInput = document.querySelector('#showHeaderText');
         let lengthBox = document.querySelector('#textLength');
         let length = 0
-        let lengthWithGratis = lengthDefault + inputsArray[3].value.length
-        let lengthWithCode = lengthDefault + inputsArray[2].value.length
-        let lengthWithGratisAndCode = lengthWithGratis + inputsArray[2].value.length
+        let lengthWithGratis = lengthDefault + inputsArray[3].length
+        let lengthWithCode = lengthDefault + inputsArray[2].length
+        let lengthWithGratisAndCode = lengthWithGratis + inputsArray[2].length
         let minusLength
-        if((lengthWithGratisAndCode + 3) <= 50){
+        if ((lengthWithGratisAndCode + 3) <= 50) {
             for (const element of inputsArray) {
-                title += ' ' + element.value
+                title += element + ' '
 
             }
             length = title.length
             minusLength = 3
-        }
-        else if((lengthWithGratis + 2) <= 50){
-            title = inputsArray[0].value + ' ' + inputsArray[1].value + ' ' + inputsArray[3].value
-            length = title.length
-            minusLength =2
-            
-        }
-        else if((lengthWithCode + 2) <= 50){
-            title = inputsArray[0].value + ' ' + inputsArray[1].value + ' ' + inputsArray[2].value
+        } else if ((lengthWithGratis + 2) <= 50) {
+            title = inputsArray[0] + ' ' + inputsArray[1] + ' ' + inputsArray[3]
             length = title.length
             minusLength = 2
-            
-        }
-        else if((lengthDefault + 1) <=50){
-            title = inputsArray[0].value + ' ' + inputsArray[1].value
+
+        } else if ((lengthWithCode + 2) <= 50) {
+            title = inputsArray[0] + ' ' + inputsArray[1] + ' ' + inputsArray[2]
+            length = title.length
+            minusLength = 2
+
+        } else if ((lengthDefault + 1) <= 50) {
+            title = inputsArray[0] + ' ' + inputsArray[1]
             length = title.length
             minusLength = 1
         }
         showInput.value = title
-        lengthBox.innerText = length + " ("+minusLength +")"
+        lengthBox.innerText = length + " (" + minusLength + ")"
     }
     const getNecessaryInputsToTitle = () => {
         let name, item, code, gratis
@@ -167,9 +164,13 @@
         item = document.querySelector('[data-template-input="templateItem"]');
         code = document.querySelector('[data-template-input="templateCode"]');
         gratis = document.querySelector('[data-template-input="templateGratis"]');
+        name = getInputValue(name).split(',').join(' ')
+        item = getInputValue(item).split(',').join(' ')
+        code = getInputValue(code).split(',').join(' ')
+        gratis = getInputValue(gratis).split(',').join(' ')
         return [name, item, code, gratis]
     }
-    
+
     const resetAll = () => {
         let container = document.querySelector('#tempalteContainer');
         container.innerHTML = template
@@ -183,14 +184,14 @@
         container.innerHTML = template
         let inputs = document.querySelectorAll('input');
         for (const element of inputs) {
-            if(element.dataset.templateInput !== 'templateTitle'){
+            if (element.dataset.templateInput !== 'templateTitle') {
                 element.value = ''
             }
-           
+
         }
     }
     const selectText = (boxToCopy) => {
-       
+
         if (window.getSelection) {
             let range = document.createRange()
             range.selectNodeContents(boxToCopy)
@@ -205,14 +206,15 @@
     }
     const copy = (el) => {
         let type = el.dataset.copyAttr
-        let boxToCopy = document.querySelector('[data-template-copy="'+type+'"]');
-        if(type === 'template'){
+        let boxToCopy = document.querySelector('[data-template-copy="' + type + '"]');
+        let itemInput = document.querySelector('#clearSelect')
+        if (type === 'template') {
             selectText(boxToCopy)
-        }
-        else{
+        } else {
             boxToCopy.select()
         }
         document.execCommand('copy')
+        itemInput.select()
     }
 
     const template = `<div contenteditable="true" id="templateBox" >
@@ -221,10 +223,12 @@
     <ul data-template-item="templateItem">
         <li></li>
     </ul>
+    <div data-item-box="templateCode" data-item-hidden="true" class="hidden">
     <p><b>Oznaczenia:</b></p>
     <ul data-template-item="templateCode">
         <li></li>
     </ul>
+</div>
     <p><b>Stan:</b></p>
     <ul data-template-item="templateCondition">
         <li>Przedmiot sprawny w 100%</li>
@@ -254,6 +258,59 @@
     </ul>
 
 </div>`
-    addEvent()
 
+    addEvent()
+    let lastKeyPressed
+    const shortCutsEvents = () => {
+        document.addEventListener('keypress', function (key) {
+            lastKeyPressed = keyPressed(key)
+        })
+    }
+    let shortcutArray = [
+        {
+            'keys':'`1',
+            'run':function(){
+                return copy(document.querySelector('[data-copy-attr="templateTitle"]'))
+            }
+        },
+        {
+            'keys':'`2',
+            'run':function(){
+                return copy(document.querySelector('[data-copy-attr="template"]'))
+            }
+        },
+        {
+            'keys':'`3',
+            'run':function(){
+                return morePieces(document.querySelector('#morePieces'))
+            }
+        },
+        {
+            'keys':'`q',
+            'run':function(){
+                return resetAll()
+            }
+        },
+        {
+            'keys':'`w',
+            'run':function(){
+                return resetWithoutName()
+            }
+        },
+        
+    ]
+    const keyPressed = (el) => {
+        let shortcut = lastKeyPressed + el.key
+        matchKey(shortcut);
+        return el.key
+    }
+    const matchKey = (shortcut)=>{
+        for (const element of shortcutArray) {
+            if(element.keys === shortcut){
+                element.run
+                console.log(element.run());
+            }
+        }
+    }
+    shortCutsEvents()
 })()

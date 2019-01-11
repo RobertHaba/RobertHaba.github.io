@@ -10,43 +10,50 @@
 </head>
 
 <body>
-    <input type="text" data-input="template" data-template-input="templateTitle" data-template-copy="templateTitle" placeholder="Nazwa Modelu">
+    <input type="text" data-input="template" data-template-input="templateTitle" placeholder="Nazwa Modelu">
     <input type="text" data-input="template" data-template-input="templateItem" placeholder="Przedmiot">
-    <input type="text" data-input="template" data-template-input="templateCode" data-template-copy="templateCode" data-template-text="uppercase"
-        placeholder="Oznaczenie">
-        <input type="text" data-input="template" data-template-input="templateGratis" placeholder="Dodatki">
+    <input type="text" data-input="template" data-template-input="templateCode" data-template-copy="templateCode"
+        data-template-text="uppercase" placeholder="Oznaczenie">
+    <input type="text" data-input="template" data-template-input="templateGratis" placeholder="Dodatki">
     <input type="text" data-input="template" data-template-input="templateDescription" placeholder="Opis">
-    
-    <input type="text" id="showHeaderText">
+
+    <input type="text" id="showHeaderText" data-template-copy="templateTitle" readonly> <button id="morePieces" data-btn-info="more">(`3) Więcej sztuk </button>
     <div id="textLength">0</div>
-    <button id="morePieces" data-btn-info="more">Więcej sztuk</button>
     <button id="copyTitleBtn" data-copy-attr='templateTitle'>
-        Kopiuj Tytuł
+        (`1) Tytuł 
     </button>
+    <button id="copyBtn" data-copy-attr='template'>
+        (`2) Szablon 
+    </button>
+    <button id="resetAll">
+        (`q) R Wszystko 
+    </button>
+    <button id="resetOthers">
+        (`w) R Bez nazwy 
+    </button>
+    
+    
+    
     <button id="copyCode" data-copy-attr='templateCode'>
         Kopiuj Oznaczenie
     </button>
-    <button id="copyBtn" data-copy-attr='template'>
-        Kopiuj Szablon
-    </button>
-    <button id="resetOthers">
-        Resetuj - bez nazwy
-    </button>
-    <button id="resetAll">
-        Resetuj wszystko
-    </button>
     
+   
+  
+
     <div class="container" id="tempalteContainer" data-template-copy="template">
-        <div contenteditable="true" id="templateBox" >
+        <div contenteditable="true" id="templateBox">
             <h1 data-template-item="templateTitle">Nazwa</h1>
             <p><b>Przedmiot</b></p>
             <ul data-template-item="templateItem">
                 <li></li>
             </ul>
-            <p><b>Oznaczenia:</b></p>
-            <ul data-template-item="templateCode">
-                <li></li>
-            </ul>
+            <div data-item-box="templateCode" data-item-hidden="true" class="hidden">
+                <p><b>Oznaczenia:</b></p>
+                <ul data-template-item="templateCode">
+                    <li></li>
+                </ul>
+            </div>
             <p><b>Stan:</b></p>
             <ul data-template-item="templateCondition">
                 <li>Przedmiot sprawny w 100%</li>
@@ -54,7 +61,6 @@
             <p><b>Stan wizualny:</b></p>
             <ul data-template-item="templateVisualCondition">
                 <li>Widoczny na zdjęciach</li>
-                <li>Ryski</li>
             </ul>
             <div data-item-box="templateDescription" data-item-hidden="true" class="hidden">
                 <p><b>Opis:</b></p>
@@ -74,10 +80,10 @@
                     przed zakupem. Unikniemy w ten sposób nieporozumień w postaci negatywnych opinii.</li>
                 <li>Serdecznie zapraszamy na nasze pozostałe aukcje.</li>
             </ul>
-        
+
         </div>
     </div>
-
+    <input type="value" id="clearSelect">
 
     <script src="main.js"></script>
 </body>
