@@ -17,7 +17,7 @@
     <input type="text" data-input="template" data-template-input="templateGratis" placeholder="Dodatki">
     <input type="text" data-input="template" data-template-input="templateDescription" placeholder="Opis">
 
-    <input type="text" id="showHeaderText" data-template-copy="templateTitle" readonly> <button id="morePieces" data-btn-info="more">(`3) Więcej sztuk </button>
+    <input type="text" id="showHeaderText" data-template-copy="templateTitle" value='' readonly> <button id="morePieces" data-btn-info="more">(`3) Więcej sztuk </button>
     <div id="textLength">0</div>
     <button id="copyTitleBtn" data-copy-attr='templateTitle'>
         (`1) Tytuł 
@@ -25,12 +25,13 @@
     <button id="copyBtn" data-copy-attr='template'>
         (`2) Szablon 
     </button>
-    <button id="resetAll">
-        (`q) R Wszystko 
-    </button>
     <button id="resetOthers">
-        (`w) R Bez nazwy 
+        (`q) R Bez nazwy 
     </button>
+    <button id="resetAll">
+        (`w) R Wszystko 
+    </button>
+    
     
     
     
@@ -58,16 +59,12 @@
             <ul data-template-item="templateCondition">
                 <li>Przedmiot sprawny w 100%</li>
             </ul>
-            <p><b>Stan wizualny:</b></p>
-            <ul data-template-item="templateVisualCondition">
-                <li>Widoczny na zdjęciach</li>
-            </ul>
-            <div data-item-box="templateDescription" data-item-hidden="true" class="hidden">
+            
                 <p><b>Opis:</b></p>
                 <ul data-template-item="templateDescription">
-                    <li></li>
+                    <li>Stan wizualny widoczny na zdjęciach</li>
                 </ul>
-            </div>
+            
             <div data-item-box="templateGratis" data-item-hidden="true" class="hidden">
                 <p><b>Dodatki:</b></p>
                 <ul data-template-item="templateGratis">
@@ -76,7 +73,7 @@
             </div>
             <p><b>Informacje:</b></p>
             <ul data-template-item="templateInformation">
-                <li>Uprzejmie prosimy o porównanie <b>oznaczeń</b>, jak i dokładne porównanie przedmiotu ze <b>zdjęciem</b>
+                <li id="informationText">Uprzejmie prosimy o dokładne porównanie przedmiotu ze <b>zdjęciem</b>
                     przed zakupem. Unikniemy w ten sposób nieporozumień w postaci negatywnych opinii.</li>
                 <li>Serdecznie zapraszamy na nasze pozostałe aukcje.</li>
             </ul>
@@ -84,7 +81,9 @@
         </div>
     </div>
     <input type="value" id="clearSelect">
+    <ul id='autocompleteText'>
 
+    </ul>
     <script src="main.js"></script>
 </body>
 
