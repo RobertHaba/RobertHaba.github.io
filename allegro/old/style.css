@@ -1,0 +1,20 @@
+.container {
+    -webkit-user-modify: read-write;
+    overflow-wrap: break-word;
+}
+
+#showHeaderText {
+    width: 600px;
+}
+
+[data-check-length="normal"] {
+    text-transform: capitalize
+}
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: block;
+}

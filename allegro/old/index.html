@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" data-input="template" data-template-input="templateTitle" placeholder="Nazwa Modelu">
+    <input type="text" data-input="template" data-template-input="templateItem" placeholder="Przedmiot">
+    <input type="text" data-input="template" data-template-input="templateCode" data-template-copy="templateCode"
+        data-template-text="uppercase" placeholder="Oznaczenie">
+    <input type="text" data-input="template" data-template-input="templateGratis" placeholder="Dodatki">
+    <input type="text" data-input="template" data-template-input="templateDescription" placeholder="Opis">
+
+    <input type="text" id="showHeaderText" data-template-copy="templateTitle" value='' readonly> <button id="morePieces"
+        data-btn-info="more">(`3) Więcej sztuk </button>
+    <div id="textLength">0</div>
+    <button id="copyTitleBtn" data-copy-attr='templateTitle'>
+        (`1) Tytuł
+    </button>
+    <button id="copyBtn" data-copy-attr='template'>
+        (`2) Szablon
+    </button>
+    <button id="resetOthers">
+        (`q) R Bez nazwy
+    </button>
+    <button id="resetAll">
+        (`w) R Wszystko
+    </button>
+
+
+
+
+    <button id="copyCode" data-copy-attr='templateCode'>
+        Kopiuj Oznaczenie
+    </button>
+
+
+
+
+    <div class="container" id="tempalteContainer" data-template-copy="template">
+        <div contenteditable="true" id="templateBox">
+            <h1 data-template-item="templateTitle">Nazwa</h1>
+            <p><b>Przedmiot</b></p>
+            <ul data-template-item="templateItem">
+                <li></li>
+            </ul>
+            <div data-item-box="templateCode" data-item-hidden="true" class="hidden">
+                <p><b>Oznaczenia:</b></p>
+                <ul data-template-item="templateCode">
+                    <li></li>
+                </ul>
+            </div>
+            <p><b>Stan:</b></p>
+            <ul data-template-item="templateCondition">
+                <li>Przedmiot sprawny w 100%</li>
+            </ul>
+
+            <p><b>Opis:</b></p>
+            <ul data-template-item="templateDescription">
+                <li>Stan wizualny widoczny na zdjęciach</li>
+            </ul>
+
+            <div data-item-box="templateGratis" data-item-hidden="true" class="hidden">
+                <p><b>Dodatki:</b></p>
+                <ul data-template-item="templateGratis">
+                    <li></li>
+                </ul>
+            </div>
+            <p><b>Informacje:</b></p>
+            <ul data-template-item="templateInformation">
+                <li id="informationText">Uprzejmie prosimy o dokładne porównanie przedmiotu ze <b>zdjęciem</b>
+                    przed zakupem. Unikniemy w ten sposób nieporozumień w postaci negatywnych opinii.</li>
+                <li>Serdecznie zapraszamy na nasze pozostałe aukcje.</li>
+            </ul>
+
+        </div>
+    </div>
+    <input type="value" id="clearSelect">
+    <ul id='autocompleteText'>
+
+    </ul>
+    <script src="main.js"></script>
+</body>
+
+</html>

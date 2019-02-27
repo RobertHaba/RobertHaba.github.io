@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+    <nav class="nav">
+        <button class="nav__button" id="showOptionsBtn">WIĘCEJ OPCJI</button>
+    </nav>
+    <main class="main">
+            <section class="container">
+                    <div class="wrapper">
+                        <div class="input-box bg--aqua">
+                            <textarea class="textarea textarea--main" data-input="template" data-template-input="templateTitle"></textarea>
+                            <div class="icon icon--laptop"></div>
+                        </div>
+                        <div class="input-box bg--red">
+                            <textarea class="textarea textarea--main" data-input="template" data-template-input="templateItem"></textarea>
+                            <div class="icon icon--fan"></div>
+                        </div>
+                        <div class="input-box bg--green">
+                            <textarea class="textarea textarea--main" data-input="template" data-template-input="templateCode"></textarea>
+                            <div class="icon icon--barcode"></div>
+                        </div>
+                        <div class="input-box bg--blue">
+                            <textarea class="textarea textarea--main" data-input="template" data-template-input="templateGratis"></textarea>
+                            <div class="icon icon--add"></div>
+                        </div>
+                        <div class="input-box bg--orange">
+                            <textarea class="textarea textarea--main" data-input="template" data-template-input="templateDescription"></textarea>
+                            <div class="icon icon--paper"></div>
+                        </div>
+                        <div class="input-box bg--grey">
+                            <input id="showHeaderText" class="textarea textarea--main" data-template-copy="templateTitle" readonly="">
+                            <div id="textLength">0</div>
+                        </div>
+                        <div class="">
+                            <button id="morePieces" data-btn-info="more">(`3) Więcej sztuk </button>
+                            <button id="copyTitleBtn" data-copy-attr="templateTitle">
+                                (`1) Tytuł 
+                            </button>
+                            <button id="copyBtn" data-copy-attr="template">
+                                (`2) Szablon 
+                            </button>
+                            <button id="resetOthers">
+                                (`q) R Bez nazwy 
+                            </button>
+                            <button id="resetAll">
+                                (`w) R Wszystko 
+                            </button>
+                            <button id="copyCode" data-copy-attr="templateCode">
+                                Kopiuj Oznaczenie
+                            </button>
+                        </div>
+                        <input type="value" id="clearSelect">
+                    </div>
+                </section>
+                    <section class="container" id="tempalteContainer" data-template-copy="template">
+                        <div id="templateBox" contenteditable="true">
+                            <h1 data-template-item="templateTitle">Nazwa</h1>
+                            <p><b>Przedmiot</b></p>
+                            <ul data-template-item="templateItem">
+                                <li><br></li>
+                            </ul>
+                            <div data-item-box="templateCode" data-item-hidden="true" class="hidden">
+                                <p><b>Oznaczenia:</b></p>
+                                <ul data-template-item="templateCode">
+                                    <li><br></li>
+                                </ul>
+                            </div>
+                            <p><b>Stan:</b></p>
+                            <ul data-template-item="templateCondition">
+                                <li>Przedmiot sprawny w 100%</li>
+                            </ul>
+                            
+                                <p><b>Opis:</b></p>
+                                <ul data-template-item="templateDescription">
+                                    <li>Stan wizualny widoczny na zdjęciach</li>
+                                </ul>
+                            
+                            <div data-item-box="templateGratis" data-item-hidden="true" class="hidden">
+                                <p><b>Dodatki:</b></p>
+                                <ul data-template-item="templateGratis">
+                                    <li><br></li>
+                                </ul>
+                            </div>
+                            <p><b>Informacje:</b></p>
+                            <ul data-template-item="templateInformation">
+                                <li id="informationText">Uprzejmie prosimy o dokładne porównanie przedmiotu ze <b>zdjęciem</b>
+                                    przed zakupem. Unikniemy w ten sposób nieporozumień w postaci negatywnych opinii.</li>
+                                <li>Serdecznie zapraszamy na nasze pozostałe aukcje.</li>
+                            </ul>
+                
+                        </div>
+                </section>
+    </main><script src="app.js">
+    </script>
+    <script src="main.js">
+    </script>
+</body>
+</html>

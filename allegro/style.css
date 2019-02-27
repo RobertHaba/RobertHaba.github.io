@@ -1,0 +1,156 @@
+*{
+    box-sizing: border-box;
+   
+}
+body{
+    padding: 0;
+    margin: 0;
+}
+.main{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.container{
+    width: 100%;
+    height: auto;
+    padding: 25px;
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+}
+.wrapper{
+    display: grid;
+    grid-gap: 10px;
+}
+.input-box{
+    display: grid;
+    grid-template-columns: 1fr 35px;
+    align-items: center;
+    width: 100%;
+    max-width: 480px;
+    height: 100%;
+    background-color: #65DAFF;
+    padding-right: 7.5px;
+    height: 50px;
+}
+.textarea{
+    padding: 5px 15px;
+    width: 100%;
+    height: 100%;
+    resize:none;
+    border: none;
+    height: 50px;
+}
+.textarea--main{
+    background-color: rgba(0,0,0,0);
+}
+.textarea--white-text{
+    color:#FFF;
+}
+.nav{
+    position: fixed;
+    width: 100%;
+    height: 20px;
+    top:0;
+    background-color: #000;
+
+}
+.nav__button{
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    border: none;
+    color:#FFF;
+    font-size: 10px;
+    cursor: pointer;
+}
+[data-parm-length="count"]{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.button-box{
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: auto;
+}
+.btn{
+    padding: 5px 10px;
+    border: none;
+    background-color: rgba(0,0,0,0);
+    font-family: 'Montserrat';
+    cursor: pointer;
+}
+.btn--options{
+    min-width: 150px;
+    background-color: rgb(142, 221, 14);
+    margin: 3px;
+    color:#FFF;
+}
+
+
+
+.bg--aqua{
+    background-color: #65DAFF;
+}
+.bg--red{
+    background-color: #FF7F7F;
+}
+.bg--green{
+    background-color: #C2FF74;
+}
+.bg--blue{
+    background-color: #789EFF;
+}
+.bg--orange{
+    background-color: #FFBA64;
+}
+.bg--grey{
+    background-color: #EDEDED;
+}
+.bg--dark{
+    background-color: #222;
+    color:#FFF;
+}
+
+.icon{
+    width: 35px;
+    height: 35px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.icon--laptop{
+    background-image: url('./img/icons/laptop.svg')
+}
+.icon--fan{
+    background-image: url('./img/icons/fan.svg')
+}
+.icon--barcode{
+    background-image: url('./img/icons/barcode.svg')
+}
+.icon--paper{
+    background-image: url('./img/icons/paper.svg')
+}
+.icon--add{
+    background-image: url('./img/icons/add.svg')
+}
+.icon--number{
+    background-image: url('./img/icons/number.svg')
+}
+.textarea--fake{
+
+    cursor: default;
+}
+.input-box--fake{
+    opacity: 0;
+}
+.hidden{
+    display: none;
+}
+.show{
+    display: block;
+}
