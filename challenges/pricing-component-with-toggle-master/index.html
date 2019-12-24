@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <title>Frontend Mentor | [Challenge Name Here]</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+        .attribution {
+            font-size: 11px;
+            text-align: center;
+        }
+        
+        .attribution a {
+            color: hsl(228, 45%, 44%);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="container header">
+        <div class="header-title">
+            <h2>Our Pricing</h2>
+        </div>
+        <div class="header-options">
+            <p>Annually</p>
+            <label class="header-options__toggle">
+                <input type="checkbox" name="" id="priceCheckbox" class="checkbox">
+                <span class="toggle-slider"></span>
+            </label>
+
+            <p>Monthly</p>
+        </div>
+    </header>
+    <main class='container content'>
+        <section class="card">
+            <div class="card__header card-header">
+                <h2 class="card-header__title">
+                    Basic
+                </h2>
+            </div>
+            <div class="card__price card-price">
+                <p class="card-price__text card-price__text">
+                    <span class="card-price-symbole">&dollar;</span>
+                    <span class="price price--annually" data-price-type="annually">199.99</span>
+                    <span class="price price--monthly" data-price-type="monthly">19.99</span>
+                </p>
+            </div>
+            <ul class="card__content card-content-list">
+                <li class="card-content-list__item">
+                    <p>500 GB Storage</p>
+                </li>
+                <li class="card-content-list__item">
+                    <p>2 Users Allowed</p>
+                </li>
+                <li class="card-content-list__item">
+                    <p>Send up to 3 GB</p>
+                </li>
+            </ul>
+            <div class="card__option">
+                <button class="btn">
+                Learn More
+              </button>
+            </div>
+        </section>
+        <section class="card card--active">
+            <div class="card__header card-header">
+                <h2 class="card-header__title">
+                    Professional
+                </h2>
+            </div>
+            <div class="card__price card-price">
+                <p class="card-price__text card-price__text">
+                    <span class="card-price-symbole">&dollar;</span>
+                    <span class="price price--annually" data-price-type="annually">249.99</span>
+                    <span class="price price--monthly" data-price-type="monthly">24.99</span>
+                </p>
+            </div>
+            <ul class="card__content card-content-list">
+                <li class="card-content-list__item">
+                    <p>1 TB Storage</p>
+                </li>
+                <li class="card-content-list__item">
+                    <p>5 Users Allowed</p>
+                </li>
+                <li class="card-content-list__item">
+                    <p>Send up to 10 GB</p>
+                </li>
+            </ul>
+            <div class="card__option">
+                <button class="btn">
+              Learn More
+            </button>
+            </div>
+        </section>
+        <section class="card">
+            <div class="card__header card-header">
+                <h2 class="card-header__title">
+                    Master
+                </h2>
+            </div>
+            <div class="card__price card-price">
+                <p class="card-price__text card-price__text">
+                    <span class="card-price-symbole">&dollar;</span>
+                    <span class="price price--annually" data-price-type="annually">399.99</span>
+                    <span class="price price--monthly" data-price-type="monthly">39.99</span>
+                </p>
+            </div>
+            <ul class="card__content card-content-list">
+                <li class="card-content-list__item">
+                    <p>2 TB Storage</p>
+                </li>
+                <li class="card-content-list__item">
+                    <p>10 Users Allowed</p>
+                </li>
+                <li class="card-content-list__item">
+                    <p>Send up to 20 GB</p>
+                </li>
+            </ul>
+            <div class="card__option">
+                <button class="btn">
+            Learn More
+          </button>
+            </div>
+        </section>
+    </main>
+
+    <div class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by <a href="https://roberthaba.github.io/">Haba</a>.
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>

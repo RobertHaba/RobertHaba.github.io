@@ -1,0 +1,293 @@
+:root {
+    --very-light-grayish-blue: hsl(240, 78%, 98%);
+    --light-grayish-blue: hsl(234, 14%, 74%);
+    --grayish-blue: hsl(233, 13%, 49%);
+    --dark-grayish-blue: hsl(232, 13%, 33%);
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+li {
+    list-style-type: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    max-width: 100vw;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    background-color: var(--very-light-grayish-blue);
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100vw;
+        height: 80vh;
+        background-image: url('../images/bg-top.svg');
+        background-size: 100% 100%;
+        background-position: 55vw;
+        background-repeat: no-repeat;
+        z-index: -3;
+    }
+}
+
+button {
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.container {
+    padding: 0 1.5rem;
+    width: 100%;
+}
+
+.header {
+    margin: 3rem 0;
+    display: flex;
+    flex-direction: column;
+    .header-title {
+        font-size: 2em;
+        color: var(--grayish-blue);
+        text-align: center;
+    }
+    .header-options {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2rem;
+        color: var(--light-grayish-blue);
+        .header-options__toggle {
+            position: relative;
+            width: 50px;
+            height: 30px;
+            border-radius: 20px;
+            margin: 0 2rem;
+            .checkbox {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+            .toggle-slider {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: linear-gradient(to right, #a3a8f0, #696fdd);
+                background-color: #FFF;
+                border-radius: 20px;
+            }
+            .toggle-slider:after {
+                content: '';
+                position: absolute;
+                left: 4px;
+                top: 4px;
+                width: 22px;
+                height: 22px;
+                background-color: #FFF;
+                border-radius: 100%;
+                transition: all .3s ease-in;
+            }
+            .checkbox:checked+.toggle-slider:after {
+                transform: translateX(20px);
+            }
+        }
+    }
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    .card {
+        margin-bottom: 1.5rem;
+        max-width: 320px;
+        width: 100%;
+        color: var(--grayish-blue);
+        padding: 1.5rem;
+        background-color: #FFF;
+        border-radius: 10px;
+        box-shadow: 0 4px 9px 0px hsl(240, 11%, 91%);
+        .card__header {
+            padding: 1rem 0 1.5rem;
+            .card-header__title {
+                text-align: center;
+            }
+        }
+        .card__price {
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(218, 218, 218, 0.5);
+            .card-price__text {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--dark-grayish-blue);
+                .card-price-symbole {
+                    font-size: 2.5rem;
+                }
+                .price {
+                    font-size: 4rem;
+                }
+                .price--monthly {
+                    display: none;
+                }
+            }
+        }
+        .card__content {
+            .card-content-list__item {
+                padding: 0.8rem;
+                text-align: center;
+                border-bottom: 1px solid rgba(218, 218, 218, 0.5);
+            }
+        }
+        .card__option {
+            padding-top: 1.5rem;
+            .btn {
+                padding: 0.5rem 0;
+                width: 100%;
+                color: #FFF;
+                font-size: 0.75rem;
+                text-transform: uppercase;
+                letter-spacing: 0.1rem;
+                background-image: linear-gradient(to right, #a3a8f0, #696fdd);
+                background-color: #696fdd;
+                border: none;
+                border-radius: 5px;
+                &:hover {
+                    transition: 0.4s ease-in all;
+                    background-image: none;
+                    background-color: #FFF;
+                    color: #696fdd;
+                }
+            }
+        }
+    }
+    .card--active {
+        background-image: linear-gradient(to bottom, #a3a8f0, #696fdd);
+        color: #FFF;
+        .card__price {
+            .card-price__text {
+                color: #FFF;
+            }
+        }
+        .card__option {
+            .btn {
+                background-image: none;
+                background-color: #FFF;
+                color: #000;
+                &:hover {
+                    transition: 0.4s ease-in all;
+                    background-image: none;
+                    background-color: #6d70b900;
+                    color: #FFF;
+                }
+            }
+        }
+    }
+    @media screen and (min-width:1025px) {
+        .card--active {
+            padding: 3rem 1.5rem;
+        }
+    }
+}
+
+@media screen and (max-width:1024px) {
+    .content {
+        flex-direction: column;
+    }
+}
