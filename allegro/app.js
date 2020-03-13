@@ -469,7 +469,7 @@
         }],
         [{
             'name': 'koszyk',
-            'value': 'Koszyk Kieszeń Dysku HDD'
+            'value': 'Koszyk Kieszeń Dysku HDD SSD'
         }],
         [{
             'name': 'listwa',
@@ -511,6 +511,10 @@
             'value': 'Karta Sieciowa WLAN WiFi Wi-Fi'
         }],
         [{
+            'name': 'lte',
+            'value': 'Moduł Modem Karta LTE WWAN'
+        }],
+        [{
             'name': 'listwa',
             'value': 'Listwa Maskownica Zaślepka'
         }],
@@ -545,7 +549,7 @@
         }],
         //Gniazda
         [{
-            'name': 'zasilania',
+            'name': 'gniazdo',
             'value': 'Gniazdo Zasilania Ładowania'
         }],
         // do matryc
@@ -557,6 +561,22 @@
             'name': 'taśma',
             'value': 'Taśma Matrycy LCD'
         }],
+        [{
+            'name': 'gumki',
+            'value': 'Gumki Stopki Obudowa Kadłubka'
+        }],
+        [{
+            'name': 'bluetooth',
+            'value': 'Moduł Bluetooth Modem BT'
+        }],
+        [{
+            'name': 'touchpad',
+            'value': 'Moduł Touchpad Gładzik'
+        }],
+        [{
+            'name': 'zaślepki zawiasów',
+            'value': 'Maskownice Zaślepki Zawiasów'
+        }]
 
     ]
 
