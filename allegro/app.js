@@ -369,6 +369,7 @@
         <li id="informationText">Uprzejmie prosimy o dokładne porównanie przedmiotu ze <b>zdjęciem</b>
             przed zakupem. Unikniemy w ten sposób nieporozumień w postaci negatywnych opinii.</li>
         <li>Serdecznie zapraszamy na nasze pozostałe aukcje.</li>
+        <li>Istnieje również możliwość konfiguracji podzespołów na życzenie klienta (RAM, Dysk). W tym celu prosimy o kontakt.</li>
     </ul>
     <div data-item-box="templateNumber" data-item-hidden="true" class="hidden">
     <p><b>Numer magazynowy:</b></p>
